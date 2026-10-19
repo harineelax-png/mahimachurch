@@ -1,0 +1,67 @@
+.mv-section {
+  padding: 80px 20px;
+  background:
+    radial-gradient(
+      circle at top left,
+     "#f6efe9",
+      transparent 0%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      "#f6efe9",
+      transparent 0%
+    ),
+    "#f6efe9";
+}
+.mv-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+
+.mv-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.mv-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #ffffff;
+  transition: transform 0.4s ease;
+}
+
+.mv-card:hover .mv-icon {
+  transform: scale(1.1) rotate(3deg);
+}
+
+.mv-icon.vision {
+  background: linear-gradient(135deg, #20c997, #12b886);
+}
+
+.mv-icon.mission {
+  background: linear-gradient(135deg, #f59f00, #f08c00);
+}
+
+.mv-card h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.mv-card p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #4b5563;
+}

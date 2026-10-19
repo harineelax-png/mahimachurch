@@ -1,0 +1,104 @@
+/* Intro Section Styling */
+.intro-title {
+  font-weight: 700;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.intro-text {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #444;
+  letter-spacing: 0.01rem;
+}
+
+/* Split Section Styling */
+.form-section {
+  min-height: 600px;
+}
+
+.left-panel {
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+              url('https://images.unsplash.com/photo-1507692049790-de58290a4334?q=80&w=2070') center/cover;
+  min-height: 500px;
+}
+
+.right-panel {
+  background-color: #a67c33; /* Matches the gold/brown from screenshot */
+}
+
+/* Typography for CTA */
+.cta-heading {
+  color: #fff;
+  font-family: 'Playfair Display', serif; /* Or a standard Serif */
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.cta-subtext {
+  color: #ccc;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+}
+
+/* Play Button Styling */
+.play-btn-circle {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #a67c33;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-triangle {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid #a67c33;
+  margin-left: 4px;
+}
+
+.victory-text {
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+}
+
+/* Form Inputs Styling */
+.pill-input {
+  background-color: #f1ede6 !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 12px 25px !important;
+  color: #333 !important;
+}
+
+.box-input {
+  background-color: #f1ede6 !important;
+  border: none !important;
+  border-radius: 20px !important;
+  padding: 20px 25px !important;
+}
+
+.dark-submit-btn {
+  background-color: #1a1a1a !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 12px 45px !important;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: opacity 0.3s ease;
+}
+
+.dark-submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cta-heading { font-size: 2.2rem; }
+}

@@ -1,0 +1,23 @@
+/* Container styling to center the calendar */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* 
+  The class returned by our tileClassName function.
+  !important is often needed to override the default react-calendar styles.
+*/
+.highlighted-date {
+  background-color: #ffcc00 !important; /* Yellow highlight */
+  color: black !important;
+  border-radius: 50%; /* Make it circular */
+  font-weight: bold;
+}
+
+/* Optional: Change the color when hovering over a highlighted date */
+.highlighted-date:hover {
+  background-color: #ffaa00 !important;
+}

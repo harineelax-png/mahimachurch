@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# Mahima Church website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React single-page website for Mahima Church. Page navigation is handled by React Router; the shared navigation bar is rendered by the app around each page.
 
-## Available Scripts
+## Technology
 
-In the project directory, you can run:
+- JavaScript and JSX, using React 19
+- Create React App (`react-scripts`) for the development server and production build
+- React Router DOM 7 for client-side routes
+- React-Bootstrap and Bootstrap 5 for shared UI components and styles
+- Page-specific styling uses CSS files, inline styles, and (in some components) `styled-components`
+- Other installed integrations include FullCalendar and EmailJS
 
-### `npm start`
+Dependencies and available commands are listed in [package.json](./package.json). This is a frontend-only project; no backend server is defined in the package scripts.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Run locally
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Install a current Node.js LTS release, then from the project root run:
 
-### `npm test`
+```sh
+npm install
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Open [http://localhost:3000](http://localhost:3000). The development server reloads after source changes.
 
-### `npm run build`
+On Windows PowerShell, if the `npm` command is blocked by the script execution policy, use the Windows command shim instead:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```powershell
+npm.cmd install
+npm.cmd start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Other available commands:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+npm test       # Start the Create React App test runner
+npm run build  # Create an optimized production build in build/
+```
 
-### `npm run eject`
+## Project layout
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```text
+src/
+  App.js                    App shell and URL-to-page route definitions
+  index.js                  React application entry point
+  index.css                 Global base styles
+  components/
+    Navbar.jsx              Active shared navigation bar
+    Navbar.css              Older custom-nav styles (not currently imported)
+    pages/                  Route-level page components
+    sections/               Sections reused within pages
+  images/                   Images imported by components
+public/                     Static files served as-is
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Add a page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Create a component in `src/components/pages/`, for example `src/components/pages/Contact.jsx`:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```jsx
+   function Contact() {
+     return <main><h1>Contact</h1></main>;
+   }
 
-## Learn More
+   export default Contact;
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Import it and register its URL in the `<Routes>` block in [src/App.js](./src/App.js):
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```jsx
+   import Contact from "./components/pages/Contact";
 
-### Code Splitting
+   // Inside <Routes>:
+   <Route path="/contact" element={<Contact />} />
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. If visitors should reach it from the shared navigation, add a React-Bootstrap link in [src/components/Navbar.jsx](./src/components/Navbar.jsx), using React Router's `Link`:
 
-### Analyzing the Bundle Size
+   ```jsx
+   <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   For a link inside the About dropdown, add a `NavDropdown.Item` there instead. Use `<Link to="...">` for internal pages; use a regular `<a href="...">` for external sites.
 
-### Making a Progressive Web App
+4. Add a page-specific stylesheet next to the page (for example `Contact.css`) and import it from the component if needed. Put shared base styles in `src/index.css`. Put reusable visual sections in `src/components/sections/`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Update an existing page or navigation
 
-### Advanced Configuration
+- **Page content/behavior:** edit its component in `src/components/pages/`. For example, the home page is assembled from section components in `Home.jsx`; edit those in `src/components/sections/` when changing a specific home-page section.
+- **URL or page component mapping:** edit the route in `src/App.js`.
+- **Navigation labels, destinations, dropdown, and layout:** edit `src/components/Navbar.jsx`. This is the navbar imported by `App.js`.
+- **Global styling:** edit `src/index.css`; for page-specific styles, edit or add the page's imported CSS file.
+- **Images:** add assets under `src/images/` and import them in the JSX component that uses them.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`src/components/Navbar.css` is **not currently imported** by `Navbar.jsx`; editing it alone will not change the active navbar. The active navbar is built with React-Bootstrap. If you want to use the custom CSS rules in `Navbar.css`, first connect that stylesheet to the active component and ensure its selectors match the rendered markup.
 
-### Deployment
+## Current routes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| URL | Page component |
+| --- | --- |
+| `/` | `Home` |
+| `/about` | `About` |
+| `/about/our-story` | `OurStory` |
+| `/about/leadership` | `Leadership` |
+| `/about/mission` | `Mission` |
+| `/about/beliefs` | `Beliefs` |
+| `/watch-online` | `VideoSection` |
+| `/locations` | `Sundays` |
+| `/donate` | `Donate` |
+| `/what-to-expect` | `Whattoexpect` |
+| `/care` | `Care` |
+| `/events` | `COMEvents` |
+| `/prayer` | `PrayerRequest` |

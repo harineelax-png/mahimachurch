@@ -1,0 +1,54 @@
+.quicklinks-section {
+  background-color: #F8EDC4;   /* requested background */
+  color: #1f1f1f;
+  padding: 6rem 0;
+}
+
+.quicklinks-title {
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #1a1a1a;
+}
+
+.quick-card {
+  border-top: 1px solid #d8cfa3;
+  padding-top: 1.75rem;
+  height: 100%;
+}
+
+.quick-card h5 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.quick-card p {
+  font-size: 0.95rem;
+  color: #444;
+  max-width: 420px;
+}
+
+.quick-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 3px;
+  transition: opacity 0.3s ease;
+}
+
+.quick-link:hover {
+  opacity: 0.7;
+  color: #1a1a1a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .quicklinks-title {
+    font-size: 2.8rem;
+  }
+}
