@@ -11,8 +11,6 @@ import imag2 from "./../../images/image6.jpg";
 import imag3 from "./../../images/Thuchurch1.JPG";
 import imag4 from "./../../images/manChurch1.jpg";
 import imag5 from "./../../images/image16.jpg";
-import imag6 from "./../../images/image11.jpg";
-import imag7 from "./../../images/image11.jpg";
 
 function COMEvents() {
   const events2026 = [
