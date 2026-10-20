@@ -1,7 +1,6 @@
 import React from "react";
 import img1 from "../../images/image21.jpg";
 import img2 from "../../images/music1.jpg"
-import img3 from "../../images/music2.jpg"
 
 function Whattoexpect() {
   return (

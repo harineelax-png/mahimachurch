@@ -89,7 +89,7 @@ const About = () => {
       <Grid>
         {/* Card 1 */}
         <ImageCard>
-          <ImageBox><img src={img1} alt="Image 1" /></ImageBox>
+          <ImageBox><img src={img1} alt="Church community" /></ImageBox>
           <Description>Our church is rooted in love and compassion, serving the community with grace.</Description>
           <ButtonGroup>
             <Link to="/about/our-story" style={{ textDecoration: 'none' }}>
@@ -100,7 +100,7 @@ const About = () => {
 
         {/* Card 2 */}
         <ImageCard>
-          <ImageBox><img src={img2} alt="Image 2" /></ImageBox>
+          <ImageBox><img src={img2} alt="Church leadership" /></ImageBox>
           <Description>Leadership committed to guiding people toward spiritual growth and hope.</Description>
           <ButtonGroup>
             <Link to="/about/leadership" style={{ textDecoration: 'none' }}>
@@ -111,7 +111,7 @@ const About = () => {
 
         {/* Card 3 */}
         <ImageCard>
-          <ImageBox><img src={img3} alt="Image 3" /></ImageBox>
+          <ImageBox><img src={img3} alt="Church mission" /></ImageBox>
           <Description>Our mission is to spread the gospel and uplift the community with faith.</Description>
           <ButtonGroup>
             <Link to="/about/mission" style={{ textDecoration: 'none' }}>
@@ -122,7 +122,7 @@ const About = () => {
 
         {/* Card 4 */}
         <ImageCard>
-          <ImageBox><img src={img4} alt="Image 4" /></ImageBox>
+          <ImageBox><img src={img4} alt="Church beliefs" /></ImageBox>
           <Description>Our beliefs are centered on the Word of God and living a Christ-led life.</Description>
           <ButtonGroup>
             <Link to="/about/beliefs" style={{ textDecoration: 'none' }}>
