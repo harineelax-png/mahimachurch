@@ -18,6 +18,10 @@ import Home from "./components/pages/Home"
 import COMEvents from "./components/sections/COMEvents";
 import PrayerRequest from "./components/pages/PrayerRequest";
 import Care from "./components/pages/Care";
+import "./theme.css";
+import Footer from "./components/Footer";
+import News from "./components/pages/News";
+import Contact from "./components/pages/Contact";
 
 function App() {
   return (
@@ -25,7 +29,7 @@ function App() {
       <Navbar />
 
       {/* Add space below navbar */}
-      <div style={{ paddingTop: "70px" }}>
+      <div className="app-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -41,8 +45,11 @@ function App() {
            {/* <Route path="/care" element={<Care />}/> */}
           <Route path="/events" element={<COMEvents />}/>
           <Route path="/prayer" element={<PrayerRequest/>}/>
+          <Route path="/news" element={<News />} />
+          <Route path="/contact" element={<Contact />} />
           
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

@@ -83,7 +83,7 @@ const InfoButton = styled.button`
 
 const About = () => {
   return (
-    <AboutContainer>
+    <AboutContainer className="about-page">
       <Title>About Us</Title>
 
       <Grid>

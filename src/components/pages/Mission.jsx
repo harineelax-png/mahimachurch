@@ -54,7 +54,7 @@ function Mission() {
   }, [bottomSlides.length]);
 
   return (
-    <div>
+    <div className="mission-page">
       {/* ---------------- TOP AUTO SLIDER ---------------- */}
       <div
         style={{
@@ -114,6 +114,7 @@ function Mission() {
 
       {/* ================= SAME BACKGROUND AS QUICKLINKS ================= */}
       <section
+        className="mission-page-content"
         style={{
           backgroundColor:"#f6efe9",
           paddingTop: "2.5rem",

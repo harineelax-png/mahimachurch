@@ -116,20 +116,24 @@
 // export default Beliefs;
 
 import "./Beliefs.css";
+import ScrollReveal from "../ScrollReveal";
 
 function Beliefs() {
   return (
     <div className="beliefs-container">
 
       {/* Hero */}
+      <ScrollReveal className="beliefs-reveal">
       <section className="beliefs-hero">
         <h1>Our Beliefs & Core Values</h1>
         <p className="beliefs-subtitle">
           Rooted in Biblical Truth. Driven by the Love of Christ.
         </p>
       </section>
+      </ScrollReveal>
 
       {/* Mission */}
+      <ScrollReveal className="beliefs-reveal">
       <section className="beliefs-mission">
         <div className="mission-content">
           <h2>Our Mission</h2>
@@ -153,8 +157,10 @@ function Beliefs() {
           </p>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Ministries */}
+      <ScrollReveal className="beliefs-reveal">
       <section className="beliefs-pillars">
         <h2>Ministries That Build the Church</h2>
         <p className="section-intro">
@@ -163,39 +169,53 @@ function Beliefs() {
         </p>
 
         <div className="pillars-grid">
+          <ScrollReveal className="beliefs-pillar-reveal" delay={0}>
           <div className="pillar-card">
             <h3>Worship Ministry</h3>
             <p>Spirit-filled worship services that glorify God and lead believers into His presence.</p>
           </div>
+          </ScrollReveal>
 
+          <ScrollReveal className="beliefs-pillar-reveal" delay={0.07}>
           <div className="pillar-card">
             <h3>Teaching & Discipleship</h3>
             <p>Systematic Bible teaching, doctrinal foundations, and leadership training.</p>
           </div>
+          </ScrollReveal>
 
+          <ScrollReveal className="beliefs-pillar-reveal" delay={0.14}>
           <div className="pillar-card">
             <h3>Prayer Ministry</h3>
             <p>Fasting prayers, intercession, healing prayers, and all-night prayer meetings.</p>
           </div>
+          </ScrollReveal>
 
+          <ScrollReveal className="beliefs-pillar-reveal" delay={0.21}>
           <div className="pillar-card">
             <h3>Youth & Children</h3>
             <p>Spiritual nurturing through Sunday School, youth fellowships, camps, and mentoring.</p>
           </div>
+          </ScrollReveal>
 
+          <ScrollReveal className="beliefs-pillar-reveal" delay={0.28}>
           <div className="pillar-card">
             <h3>Women’s Ministry</h3>
             <p>Encouraging women to grow spiritually, strengthen families, and serve faithfully.</p>
           </div>
+          </ScrollReveal>
 
+          <ScrollReveal className="beliefs-pillar-reveal" delay={0.35}>
           <div className="pillar-card">
             <h3>Evangelism & Missions</h3>
             <p>Ongoing outreach across villages, towns, and cities of Andhra Pradesh and Telangana.</p>
           </div>
+          </ScrollReveal>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Holistic Ministry */}
+      <ScrollReveal className="beliefs-reveal">
       <section className="beliefs-holistic">
         <h2>Holistic Ministry</h2>
         <p className="holistic-intro">
@@ -215,6 +235,7 @@ function Beliefs() {
           commitment to caring for body, soul, and spirit.
         </p>
       </section>
+      </ScrollReveal>
 
     </div>
   );

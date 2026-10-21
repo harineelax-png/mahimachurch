@@ -1,19 +1,23 @@
 import React from "react";
 import "./OurStory.css";
+import ScrollReveal from "../ScrollReveal";
 
 function OurStory() {
   return (
     <div className="ourstory-container">
       
       {/* Hero Section */}
+      <ScrollReveal className="ourstory-reveal">
       <section className="ourstory-hero">
         <h1>Our Story</h1>
         <p className="ourstory-tagline">
           A Vision Given by Christ. A Journey of Faith. A Legacy of Grace.
         </p>
       </section>
+      </ScrollReveal>
 
       {/* Intro */}
+      <ScrollReveal className="ourstory-reveal">
       <section className="ourstory-section">
         <p className="ourstory-text">
           The story of <strong>Mahima Church</strong> is a testimony to the faithfulness of God and the obedience of one servant who dared to respond to a divine calling.
@@ -30,8 +34,10 @@ function OurStory() {
         </p>
 
       </section>
+      </ScrollReveal>
 
       {/* Timeline Section */}
+      <ScrollReveal className="ourstory-reveal">
       <section className="ourstory-section light">
         <h2>The Early Years (1988–1991)</h2>
         <p className="ourstory-text">
@@ -57,12 +63,14 @@ function OurStory() {
         </p>
 
         <p className="ourstory-text">
-          It was during these foundational years that the ministry came to be known as <storng>“Mahima Church”</storng> , 
+          It was during these foundational years that the ministry came to be known as <strong>“Mahima Church,”</strong>
           a name that reflects the<strong>glory (Mahima) of God</strong>  revealed through the gospel.
         </p>
       </section>
+      </ScrollReveal>
 
       {/* Growth Section */}
+      <ScrollReveal className="ourstory-reveal">
       <section className="ourstory-section">
         <h2>GROWTH THROUGH PERSEVERANCE: BUILDING THE CHURCH (1992–2010)</h2>
         <p className="ourstory-text">
@@ -98,8 +106,10 @@ function OurStory() {
         </p>
 
       </section>
+      </ScrollReveal>
 
       {/* Mission Section */}
+      <ScrollReveal className="ourstory-reveal">
       <section className="ourstory-section light">
         <h2>A MISSION-MINDED CHURCH: REACHING THE LOST</h2>
 
@@ -129,8 +139,10 @@ function OurStory() {
         
 
       </section>
+      </ScrollReveal>
 
       {/* Today Section */}
+      <ScrollReveal className="ourstory-reveal">
       <section className="ourstory-section highlight">
         <h2>Today: A Growing Family of Faith</h2>
 
@@ -149,8 +161,10 @@ function OurStory() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Future */}
+      <ScrollReveal className="ourstory-reveal">
       <section className="ourstory-section">
         <h2>Looking Ahead</h2>
         <p className="ourstory-text">
@@ -168,6 +182,7 @@ function OurStory() {
           All glory, honor, and praise belong to our Lord and Savior Jesus Christ, who has been faithful in every season
         </p>
       </section>
+      </ScrollReveal>
 
     </div>
   );

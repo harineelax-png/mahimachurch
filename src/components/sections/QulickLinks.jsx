@@ -1,10 +1,11 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import ScrollReveal from "../ScrollReveal";
 
 function QuickLinks() {
   return (
-    <section style={{ backgroundColor: "#F8EDC4", padding: "6rem 0" }}>
+    <section className="quicklinks-section" style={{ padding: "6rem 0" }}>
       <Container>
         {/* Header */}
         <Row className="mb-5">
@@ -39,7 +40,7 @@ function QuickLinks() {
       title: "Watch Live",
       text:
         "Looking for a message about a particular topic or wanting to view a sermon again?",
-      link: "https://www.youtube.com/@mahimaswaramu416",
+      link: "/watch-online",
       label: "Watch Here",
     },
             // {
@@ -65,6 +66,7 @@ function QuickLinks() {
             },
           ].map((item, index) => (
             <Col md={6} key={index}>
+              <ScrollReveal delay={index * 0.08} className="quicklink-reveal">
               <Card className="h-100 border-0 shadow-sm">
                 <Card.Body className="p-4 d-flex flex-column">
                   <Card.Title className="fw-semibold mb-3">
@@ -83,6 +85,7 @@ function QuickLinks() {
                   </Link>
                 </Card.Body>
               </Card>
+              </ScrollReveal>
             </Col>
           ))}
         </Row>
@@ -92,6 +95,4 @@ function QuickLinks() {
 }
 
 export default QuickLinks;
-
-
 

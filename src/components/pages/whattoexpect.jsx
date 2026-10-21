@@ -1,293 +1,194 @@
 import React from "react";
+import { ArrowRight, BookOpen, Clock3, Heart, MapPin, Music2, Phone, UsersRound } from "lucide-react";
+import { Link } from "react-router-dom";
 import img1 from "../../images/image21.jpg";
-import img2 from "../../images/music1.jpg"
+import img2 from "../../images/music1.jpg";
+import ScrollReveal from "../ScrollReveal";
+
+const campuses = [
+  {
+    name: "Prasadamapdu",
+    church: "Mahima Prayer Tower – Prasadamapdu",
+    services: ["Sunday worship · 8:30 AM – 10:30 AM", "Friday healing prayers · 5 PM – 7 PM"],
+    contacts: ["Bro. Devaraju · +91 87123 90777", "Sis. Deboramma · +91 91605 01681"],
+  },
+  {
+    name: "Currency Nagar",
+    church: "Mahima Prarthana Mandiram – Currency Nagar / Ramavarappadu",
+    services: ["Sunday worship · 10:30 AM – 12:30 PM"],
+    contacts: ["Pastor Bose · +91 70362 57777", "Sis. Sumadhuramma · +91 97016 96395"],
+  },
+  {
+    name: "Kondapur",
+    church: "Mahima Prayer Tower – Kondapur, Hyderabad",
+    services: ["Sunday worship · 10 AM – 12 PM", "Friday healing prayers · 6 PM – 8 PM"],
+    contacts: ["Sis. Jyothamma · +91 88867 38515", "Bro. Rajesh · +91 99895 02004"],
+  },
+  {
+    name: "Mandhadum",
+    church: "Mahima Prayer Tower – Mandhadum",
+    services: ["Sunday worship · 8 AM – 10 AM", "Friday healing prayers · 3 PM – 6 PM"],
+    contacts: ["Bro. Niranjan · +91 95814 94946", "Pastor Peter · +91 91602 32392"],
+  },
+  {
+    name: "Thulluru",
+    church: "Mahima Prayer Tower – Thulluru",
+    services: ["Sunday worship · 10 AM – 12 PM", "Friday healing prayers · 6 PM – 9 PM"],
+    contacts: ["Sis. Sailamma · +91 94916 66738", "Sis. Sulochanamma · +91 891-9830802"],
+  },
+  {
+    name: "Kanchikacherla",
+    church: "Mahima Prayer Tower – Kanchikacherla",
+    services: ["Sunday worship · 4 PM – 6 PM"],
+    contacts: ["Bro. Devaraju · +91 87123 90777", "Bro. Cephas · +91 8309-509297"],
+  },
+  {
+    name: "Dachepalli",
+    church: "Mahima Prayer Tower – Dachepalli",
+    services: ["Sunday worship · 10 AM – 12 PM", "Friday healing prayers · 6 PM – 9 PM"],
+    contacts: ["Pastor Yehoshuva · +91 97056 44966", "Bro. Niranjan · +91 95814 94946"],
+  },
+];
+
+const visitSteps = [
+  {
+    icon: UsersRound,
+    title: "Come as you are",
+    text: "Whether this is your first visit or you are looking for a church family, you are welcome here.",
+  },
+  {
+    icon: Music2,
+    title: "Worship together",
+    text: "Gather for worship, prayer, and Bible-centred teaching with the Mahima community.",
+  },
+  {
+    icon: Heart,
+    title: "Find your community",
+    text: "Connect with a campus team and discover a place to grow, serve, and belong.",
+  },
+];
 
 function Whattoexpect() {
   return (
-    <div style={{ backgroundColor: "white", padding: "40px 20px" }}>
-      {/* TOP SECTION */}
-      <div style={{ textAlign: "center", marginBottom: "80px" }}>
-        <h1
-          style={{
-            fontSize: "clamp(40px, 7vw, 80px)",
-            fontWeight: "400",
-            fontFamily: "Georgia, serif",
-            color: "#111",
-            marginBottom: "20px",
-          }}
-        >
-          Welcome to Mahima Church
-        </h1>
-
-        <p
-          style={{
-            fontSize: "clamp(18px, 2.5vw, 24px)",
-            color: "#444",
-            maxWidth: "900px",
-            margin: "0 auto",
-            lineHeight: "1.6",
-          }}
-        >
-          We're glad you're here! You've probably got questions. This is a great
-          place to get started.
-        </p>
-      </div>
-
-      {/* TEXT + IMAGE SECTION */}
-      <div
-        style={{
-          display: "flex",
-          gap: "40px",
-          alignItems: "flex-start",
-          justifyContent: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        {/* LEFT SIDE TEXT */}
-        <div style={{ flex: "1 1 400px", maxWidth: "600px", order: 1 }}>
-          <h2
-            style={{
-              fontSize: "clamp(28px, 5vw, 40px)",
-              fontWeight: "500",
-              fontFamily: "Georgia, serif",
-              color: "#111",
-              marginBottom: "10px",
-            }}
-          >
-            What to expect
-          </h2>
-
-          <p
-            style={{
-              fontSize: "20px",
-              color: "#555",
-              marginBottom: "30px",
-              lineHeight: "1.6",
-            }}
-          >
-            Everyone—men and women, along with kids through young adults—can find
-            a welcoming place to belong, grow, and contribute to a vibrant
-            community through our diverse ministries.
-          </p>
-
-          {/* BUTTON */}
-          <a
-            href="/locations"
-            style={{
-              padding: "14px 34px",
-              backgroundColor: "#000",
-              color: "white",
-              borderRadius: "6px",
-              fontSize: "18px",
-              textDecoration: "none",
-              transition: "0.3s",
-              display: "inline-block",
-              marginBottom: "20px",
-            }}
-            onMouseOver={(e) => (e.target.style.opacity = "0.7")}
-            onMouseOut={(e) => (e.target.style.opacity = "1")}
-          >
-            Locations
-          </a>
-
-          <p
-            style={{
-              fontSize: "20px",
-              color: "#555",
-              lineHeight: "1.6",
-              marginBottom: "30px",
-            }}
-          >
-            Learn more and get connected at any of our campuses.
-          </p>
-
-          {/* LOCATIONS / PRAYER TOWERS SECTION */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "24px",
-              textAlign: "left",
-            }}
-          >
-            {/* Prasadamapdu */}
-            <div
-              style={{
-                flex: "1 1 260px",
-                borderLeft: "4px solid #000",
-                paddingLeft: "16px",
-              }}
-            >
-              <h3 style={{ fontSize: "20px", marginBottom: "8px" }}>
-                Mahima Prayer Tower – Prasadamapdu
-              </h3>
-              <p><strong>Timings:</strong></p>
-              <p>Every Sunday Praise & Worship: 8:30 AM – 10:30 AM</p>
-              <p>Every Friday Healing Prayers: 5 PM – 7 PM</p>
-              <p><strong>Contacts:</strong></p>
-              <p>Bro. Devaraju @ +91 87123 90777</p>
-              <p>Sis. Deboramma @ +91 91605 01681</p>
-            </div>
-
-            {/* Currency Nagar */}
-            <div
-              style={{
-                flex: "1 1 260px",
-                borderLeft: "4px solid #000",
-                paddingLeft: "16px",
-              }}
-            >
-              <h3 style={{ fontSize: "20px", marginBottom: "8px" }}>
-                Mahima Prarthana Mandiram – Currency Nagar / Ramavarappadu
-              </h3>
-              <p><strong>Timings:</strong></p>
-              <p>Every Sunday Praise & Worship: 10:30 AM – 12:30 PM</p>
-              <p><strong>Contacts:</strong></p>
-              <p>Pastor Bose @ +91 70362 57777</p>
-              <p>Sis. Sumadhuramma @ +91 97016 96395</p>
-            </div>
-
-            {/* Kondapur Hyderabad */}
-            <div
-              style={{
-                flex: "1 1 260px",
-                borderLeft: "4px solid #000",
-                paddingLeft: "16px",
-              }}
-            >
-              <h3 style={{ fontSize: "20px", marginBottom: "8px" }}>
-                Mahima Prayer Tower – Kondapur, Hyderabad
-              </h3>
-              <p><strong>Timings:</strong></p>
-              <p>Every Sunday Praise & Worship: 10 AM – 12 PM</p>
-              <p>Every Friday Healing Prayers: 6 PM – 8 PM</p>
-              <p><strong>Contacts:</strong></p>
-              <p>Sis. Jyothamma @ +91 88867 38515</p>
-              <p>Bro. Rajesh @ +91 99895 02004</p>
-            </div>
-
-            {/* Mandhadum */}
-            <div
-              style={{
-                flex: "1 1 260px",
-                borderLeft: "4px solid #000",
-                paddingLeft: "16px",
-              }}
-            >
-              <h3 style={{ fontSize: "20px", marginBottom: "8px" }}>
-                Mahima Prayer Tower – Mandhadum
-              </h3>
-              <p><strong>Timings:</strong></p>
-              <p>Every Sunday Praise & Worship: 8 AM – 10 AM</p>
-              <p>Every Friday Healing Prayers: 3 PM – 6 PM</p>
-              <p><strong>Contacts:</strong></p>
-              <p>Bro. Niranjan @ +91 95814 94946</p>
-              <p>Pastor Peter @ +91 91602 32392</p>
-            </div>
-
-            {/* Thulluru */}
-            <div
-              style={{
-                flex: "1 1 260px",
-                borderLeft: "4px solid #000",
-                paddingLeft: "16px",
-              }}
-            >
-              <h3 style={{ fontSize: "20px", marginBottom: "8px" }}>
-                Mahima Prayer Tower – Thulluru
-              </h3>
-              <p><strong>Timings:</strong></p>
-              <p>Every Sunday Praise & Worship: 10 AM – 12 PM</p>
-              <p>Every Friday Healing Prayers: 6 PM – 9 PM</p>
-              <p><strong>Contacts:</strong></p>
-              <p>Sis. Sailamma @ +91 94916 66738</p>
-              <p>Sis. Sulochanamma @ +91 891-9830802</p>
-            </div>
-
-            {/* Kanchikacherla */}
-            <div
-              style={{
-                flex: "1 1 260px",
-                borderLeft: "4px solid #000",
-                paddingLeft: "16px",
-              }}
-            >
-              <h3 style={{ fontSize: "20px", marginBottom: "8px" }}>
-                Mahima Prayer Tower – Kanchikacherla
-              </h3>
-              <p><strong>Timings:</strong></p>
-              <p>Every Sunday Praise & Worship: 4 PM – 6 PM</p>
-              <p><strong>Contacts:</strong></p>
-              <p>Bro. Devaraju @ +91 87123 90777</p>
-              <p>Bro. Cephas @ +91 8309-509297</p>
-            </div>
-
-            {/* Dachepalli */}
-            <div
-              style={{
-                flex: "1 1 260px",
-                borderLeft: "4px solid #000",
-                paddingLeft: "16px",
-              }}
-            >
-              <h3 style={{ fontSize: "20px", marginBottom: "8px" }}>
-                Mahima Prayer Tower – Dachepalli
-              </h3>
-              <p><strong>Timings:</strong></p>
-              <p>Every Sunday Praise & Worship: 10 AM – 12 PM</p>
-              <p>Every Friday Healing Prayers: 6 PM – 9 PM</p>
-              <p><strong>Contacts:</strong></p>
-              <p>Pastor Yehoshuva @ +91 97056 44966</p>
-              <p>Bro. Niranjan @ +91 95814 94946</p>
-            </div>
-          </div>
+    <main className="welcome-visit-page">
+      <section className="visit-hero">
+        <div className="visit-hero-image" style={{ backgroundImage: `url(${img1})` }} />
+        <ScrollReveal className="visit-hero-content">
+          <span className="theme-eyebrow">A place to belong</span>
+          <h1>Welcome to Mahima Church.</h1>
+          <p>We’re glad you’re here. Come as you are, worship with us, and find a community where you can grow.</p>
+          <Link to="/locations" className="theme-button">
+            Find a location <ArrowRight size={17} aria-hidden="true" />
+          </Link>
+        </ScrollReveal>
+        <div className="visit-hero-note">
+          <Clock3 size={18} aria-hidden="true" />
+          <span>Sunday worship across our campuses</span>
         </div>
+      </section>
 
-        {/* RIGHT SIDE IMAGES WITH CAPTIONS */}
-<div
-  style={{
-    flex: "1 1 300px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
-    maxWidth: "450px",
-    order: 2,
-  }}
->
-  {[
-    { src: img1, caption: "Biblical teaching" },
-    { src: img2, caption: "Contemporary music" },
-    { src: img1, caption: "Kids learning about Jesus" },
-  ].map((item, index) => (
-    <div key={index}>
-      <img
-        src={item.src}
-        alt={item.caption}
-        style={{
-          width: "100%",
-          height: "400px",
-          maxHeight: "450px",
-          objectFit: "cover",
-          borderRadius: "8px",
-        }}
-      />
-      <p
-        style={{
-          textAlign: "center",
-          fontSize: "16px",
-          color: "#555",
-          marginTop: "8px",
-        }}
-      >
-        {item.caption}
-      </p>
-    </div>
-  ))}
-</div>
+      <section className="visit-intro">
+        <ScrollReveal className="visit-intro-copy">
+          <span className="theme-eyebrow">Your first visit</span>
+          <h2>Church is better when you feel at home.</h2>
+          <p>
+            Everyone—men and women, along with kids through young adults—can find a welcoming place to belong,
+            grow, and contribute through our diverse ministries. We’d love to meet you and your family.
+          </p>
+          <Link className="visit-text-link" to="/contact">
+            Ask us a question <ArrowRight size={16} aria-hidden="true" />
+          </Link>
+        </ScrollReveal>
+        <ScrollReveal className="visit-image-pair" delay={0.12}>
+          <img src={img2} alt="Music and worship at Mahima Church" loading="lazy" />
+          <div className="visit-image-caption">
+            <BookOpen size={18} aria-hidden="true" />
+            <span>Faith · Fellowship · Family</span>
+          </div>
+        </ScrollReveal>
+      </section>
 
-        
-      </div>
-    </div>
+      <section className="visit-steps-section">
+        <ScrollReveal className="visit-section-heading">
+          <span className="theme-eyebrow">A simple first visit</span>
+          <h2>Here’s what to expect</h2>
+          <p>There’s no pressure—just a warm welcome and an opportunity to worship together.</p>
+        </ScrollReveal>
+        <div className="visit-step-grid">
+          {visitSteps.map(({ icon: Icon, title, text }, index) => (
+            <ScrollReveal key={title} delay={index * 0.1}>
+              <article className="visit-step-card">
+                <span className="visit-step-number">0{index + 1}</span>
+                <span className="visit-step-icon"><Icon size={22} aria-hidden="true" /></span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="visit-campus-section">
+        <ScrollReveal className="visit-section-heading">
+          <span className="theme-eyebrow">Join us this week</span>
+          <h2>Find your nearest campus</h2>
+          <p>Service times and local contacts to help you plan your visit.</p>
+        </ScrollReveal>
+        <div className="visit-campus-grid">
+          {campuses.map((campus, index) => (
+            <ScrollReveal key={campus.name} delay={(index % 3) * 0.07}>
+              <article className="visit-campus-card">
+                <span className="visit-campus-marker"><MapPin size={17} aria-hidden="true" /></span>
+                <span className="visit-campus-label">{campus.name}</span>
+                <h3>{campus.church}</h3>
+                <div className="visit-campus-times">
+                  {campus.services.map((service) => (
+                    <p key={service}><Clock3 size={15} aria-hidden="true" /> {service}</p>
+                  ))}
+                </div>
+                <div className="visit-campus-contacts">
+                  {campus.contacts.map((contact) => {
+                    const phone = contact.match(/\+[\d -]+$/)?.[0].trim();
+                    const name = phone
+                      ? contact.slice(0, contact.lastIndexOf(phone)).replace(/[·–-]\s*$/, "").trim()
+                      : contact;
+                    const dialNumber = phone?.replace(/[ -]/g, "");
+
+                    return phone ? (
+                      <div className="visit-campus-contact" key={contact}>
+                        <span className="visit-campus-contact-name">{name}</span>
+                        <a
+                          className="visit-campus-contact-number"
+                          href={`tel:${dialNumber}`}
+                          aria-label={`Call ${name} at ${phone}`}
+                        >
+                          <Phone size={14} aria-hidden="true" />
+                          <span>{phone}</span>
+                        </a>
+                      </div>
+                    ) : (
+                      <div className="visit-campus-contact" key={contact}>
+                        <span className="visit-campus-contact-name">{contact}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </article>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+
+      <ScrollReveal className="visit-cta">
+        <div>
+          <span className="theme-eyebrow">We can’t wait to meet you</span>
+          <h2>Have a question before you visit?</h2>
+        </div>
+        <Link to="/contact" className="theme-button theme-button-light">
+          Get in touch <ArrowRight size={17} aria-hidden="true" />
+        </Link>
+      </ScrollReveal>
+    </main>
   );
 }
 

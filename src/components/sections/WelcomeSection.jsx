@@ -25,6 +25,7 @@ const WelcomeSection = () => {
 
   return (
     <section
+      className="welcome-section"
       style={{
         display: "flex",
         flexWrap: "wrap",

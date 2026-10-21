@@ -1,143 +1,158 @@
 import React, { useRef, useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { ArrowRight, HeartHandshake, LockKeyhole, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import ScrollReveal from "../ScrollReveal";
 import "./PrayerRequest.css";
 
 function PrayerRequest() {
   const formRef = useRef();
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+  const [statusType, setStatusType] = useState("");
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+  const sendEmail = async (event) => {
+    event.preventDefault();
     setLoading(true);
+    setStatus("");
+    setStatusType("");
 
-    emailjs
-      .sendForm(
-        "service_mpd51kn",      // Replace with your Service ID
-        "template_r8w7bbf",     // Replace with your Template ID
+    try {
+      await emailjs.sendForm(
+        "service_mpd51kn",
+        "template_r8w7bbf",
         formRef.current,
-        "oRFmU73GuT3vvqcOf"      // Replace with your Public Key
-      )
-      .then(
-        () => {
-          alert("Prayer request sent successfully.");
-          formRef.current.reset();
-          setLoading(false);
-        },
-        () => {
-          alert("Something went wrong. Please try again.");
-          setLoading(false);
-        }
+        "oRFmU73GuT3vvqcOf"
       );
+      formRef.current.reset();
+      setStatus("Your prayer request has been sent. Our prayer team will lift it up.");
+      setStatusType("success");
+    } catch (error) {
+      console.error("Unable to send prayer request.", error);
+      setStatus("We couldn’t send your request just now. Please try again.");
+      setStatusType("error");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="prayer-page-wrapper">
-      {/* Top Section: Intro Text */}
-      <section className="intro-section py-5">
+    <main className="prayer-page-wrapper prayer-page">
+      <section className="prayer-hero">
+        <ScrollReveal className="prayer-hero-content">
+          <span className="theme-eyebrow">You are not alone</span>
+          <h1>How can we pray for you?</h1>
+          <p>
+            Whatever you’re carrying, you’re welcome to share it with us. Our prayer team is here to stand with you.
+          </p>
+          <a className="prayer-hero-link" href="#prayer-form">
+            Share a request <ArrowRight size={17} aria-hidden="true" />
+          </a>
+        </ScrollReveal>
+        <div className="prayer-hero-symbol" aria-hidden="true">✝</div>
+      </section>
+
+      <section className="prayer-intro-section">
         <Container>
-          <Row className="justify-content-start">
-            <Col lg={10}>
-              <h2 className="intro-title mb-4">Do You Need Some Prayer?</h2>
-              <p className="intro-text">
-                Prayer is a powerful way to connect with God, seeking His guidance, 
-                comfort, and strength in your life. It is an opportunity to communicate 
-                your hopes, fears, and gratitude to Him. Prayer acknowledges your 
-                dependence on God and your desire for His presence in your life. In 
-                times of joy or struggle, prayer serves as a constant reminder that 
-                you are never alone and that God is always listening. Submit your 
-                requests below and embrace the gift of prayer, knowing that it is a 
-                vital part of your relationship with God and each other.
-              </p>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
-      {/* Bottom Section: Split Screen Form */}
-      <section className="form-section">
-        <Container fluid className="p-0">
-          <Row className="g-0">
-            {/* Left Column: Call to Action */}
-            <Col md={6} className="left-panel d-flex align-items-center justify-content-center p-5">
-              <div className="cta-content">
-                <h1 className="cta-heading mb-4">
-                  Feel Free Submit Your <br /> Prayer Request
-                </h1>
-                <p className="cta-subtext mb-5">
-                  our prayer teams are always there for you
+          <Row className="justify-content-center">
+            <Col lg={9}>
+              <ScrollReveal className="prayer-intro-card">
+                <span className="prayer-intro-icon"><HeartHandshake size={25} aria-hidden="true" /></span>
+                <span className="theme-eyebrow">A moment to pause</span>
+                <h2>You don’t have to walk through it alone.</h2>
+                <p>
+                  Prayer is a way to bring your hopes, fears, and gratitude before God. In times of joy or struggle,
+                  it can remind us that we are never alone. Share what is on your heart, and our team will pray with you.
                 </p>
-                
-                <div className="victory-link d-flex align-items-center">
-                  <div className="play-btn-circle">
-                    <div className="play-triangle"></div>
-                  </div>
-                  {/* <span className="victory-text ms-3">PRAYER VICTORIES</span> */}
-                </div>
-              </div>
-            </Col>
-
-            {/* Right Column: Form */}
-            <Col md={6} className="right-panel d-flex align-items-center p-5">
-              <Form ref={formRef} onSubmit={sendEmail} className="w-100 prayer-form">
-                <Row className="mb-4">
-                  <Col sm={6} className="mb-3 mb-sm-0">
-                    <Form.Control 
-                      name="user_name" 
-                      placeholder="Enter Name*" 
-                      className="pill-input" 
-                      required 
-                    />
-                  </Col>
-                  <Col sm={6}>
-                    <Form.Control 
-                      type="email" 
-                      name="user_email" 
-                      placeholder="Enter Email*" 
-                      className="pill-input" 
-                      required 
-                    />
-                  </Col>
-                </Row>
-
-                <Row className="mb-4">
-                  <Col sm={6} className="mb-3 mb-sm-0">
-                    <Form.Control 
-                      name="subject" 
-                      placeholder="Enter Subject*" 
-                      className="pill-input" 
-                      required 
-                    />
-                  </Col>
-                  <Col sm={6}>
-                    <Form.Control 
-                      name="phone" 
-                      placeholder="Enter Phone No.*" 
-                      className="pill-input" 
-                    />
-                  </Col>
-                </Row>
-
-                <Form.Group className="mb-4">
-                  <Form.Control 
-                    as="textarea" 
-                    name="message" 
-                    rows={5} 
-                    placeholder="Enter Message*" 
-                    className="box-input" 
-                    required 
-                  />
-                </Form.Group>
-
-                <Button type="submit" className="dark-submit-btn" disabled={loading}>
-                  {loading ? "SENDING..." : "SUBMIT"}
-                </Button>
-              </Form>
+              </ScrollReveal>
             </Col>
           </Row>
         </Container>
       </section>
-    </div>
+
+      <section className="prayer-form-section" id="prayer-form">
+        <Container>
+          <Row className="g-4 align-items-stretch">
+            <Col lg={5}>
+              <ScrollReveal className="prayer-form-aside">
+                <span className="theme-eyebrow">We’re listening</span>
+                <h2>Share your request in confidence.</h2>
+                <p>
+                  Our prayer team is ready to pray for you. Share only what you feel comfortable sharing.
+                </p>
+                <div className="prayer-privacy-note">
+                  <LockKeyhole size={18} aria-hidden="true" />
+                  <span>Your request is shared with our prayer team for prayer.</span>
+                </div>
+                <div className="prayer-verse">
+                  <span>“Cast all your anxiety on him because he cares for you.”</span>
+                  <small>1 Peter 5:7</small>
+                </div>
+              </ScrollReveal>
+            </Col>
+
+            <Col lg={7}>
+              <ScrollReveal className="prayer-form-card" delay={0.1}>
+                <Form ref={formRef} onSubmit={sendEmail} className="prayer-form">
+                  <Row className="g-3">
+                    <Col sm={6}>
+                      <Form.Group controlId="prayer-name">
+                        <Form.Label>Your name</Form.Label>
+                        <Form.Control name="user_name" placeholder="Enter your name" className="pill-input" required />
+                      </Form.Group>
+                    </Col>
+                    <Col sm={6}>
+                      <Form.Group controlId="prayer-email">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" name="user_email" placeholder="you@example.com" className="pill-input" required />
+                      </Form.Group>
+                    </Col>
+                    <Col sm={6}>
+                      <Form.Group controlId="prayer-subject">
+                        <Form.Label>Prayer topic</Form.Label>
+                        <Form.Control name="subject" placeholder="What would you like prayer for?" className="pill-input" required />
+                      </Form.Group>
+                    </Col>
+                    <Col sm={6}>
+                      <Form.Group controlId="prayer-phone">
+                        <Form.Label>Phone number <span>(optional)</span></Form.Label>
+                        <Form.Control type="tel" name="phone" placeholder="Your phone number" className="pill-input" />
+                      </Form.Group>
+                    </Col>
+                    <Col xs={12}>
+                      <Form.Group controlId="prayer-message">
+                        <Form.Label>Your prayer request</Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          name="message"
+                          rows={5}
+                          placeholder="Share as much or as little as you would like..."
+                          className="box-input"
+                          required
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col xs={12} className="prayer-submit-row">
+                      <Button type="submit" className="dark-submit-btn" disabled={loading}>
+                        {loading ? "Sending request..." : "Send prayer request"}
+                        {!loading && <Send size={17} aria-hidden="true" />}
+                      </Button>
+                    </Col>
+                    {status && (
+                      <Col xs={12}>
+                        <p className={`prayer-form-status ${statusType}`} role="status" aria-live="polite">
+                          {status}
+                        </p>
+                      </Col>
+                    )}
+                  </Row>
+                </Form>
+              </ScrollReveal>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </main>
   );
 }
 

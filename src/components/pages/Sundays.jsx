@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { Clock3, MapPin, Navigation, X } from "lucide-react";
+import ScrollReveal from "../ScrollReveal";
 
 // CAMPUS PHOTOS
 import imag1 from "./../../images/image5.jpg";
@@ -27,28 +29,25 @@ function Sundays() {
   const [openModal, setOpenModal] = useState(false);
   const [modalItem, setModalItem] = useState(null);
 
-  // Inject mobile responsive styles (grid + modal)
-  // Wrapped in backticks to prevent syntax errors
-  const responsiveStyles = `
-    @media (max-width: 768px) {
-      .campus-grid { grid-template-columns: 1fr !important; }
-      .modal-container { flex-direction: column !important; max-height: 80vh !important; }
-      .modal-left, .modal-right { width: 100% !important; }
-      .modal-right img { height: 200px !important; object-fit: cover !important; }
-      .modal-left { padding: 15px !important; }
-      .modal-close { top: 10px !important; right: 10px !important; font-size: 20px !important; }
-      .modal-left h3 { font-size: 20px !important; }
-    }
-  `;
+  useEffect(() => {
+    if (!openModal) return undefined;
 
-  if (typeof document !== "undefined") {
-    if (!document.getElementById("mobile-responsive")) {
-      const tag = document.createElement("style");
-      tag.id = "mobile-responsive";
-      tag.innerHTML = responsiveStyles;
-      document.head.appendChild(tag);
-    }
-  }
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setOpenModal(false);
+        setModalItem(null);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [openModal]);
 
   // All campus data
   const campuses = [
@@ -189,17 +188,16 @@ function Sundays() {
   const openMore = (item) => {
     setModalItem(item);
     setOpenModal(true);
-    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setOpenModal(false);
     setModalItem(null);
-    document.body.style.overflow = "";
   };
 
   return (
     <div
+      className="locations-page"
       style={{
         backgroundColor: "#f8eee6",
         minHeight: "100vh",
@@ -209,6 +207,7 @@ function Sundays() {
     >
       {/* Title */}
       <h1
+        className="locations-title"
         style={{
           fontSize: "80px",
           fontWeight: "400",
@@ -258,84 +257,45 @@ function Sundays() {
       </div>
 
       {/* GRID */}
-      <div
-        className="campus-grid"
-        style={{
-          marginTop: "60px",
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "20px",
-          maxWidth: "1000px",
-          margin: "0 auto",
-        }}
-      >
-        {campuses.map((item) => (
-          <div key={item.id} style={{ textAlign: "left" }}>
-            <img
-              src={item.campusImage}
-              alt={item.cardTitle}
-              style={{
-                width: "100%",
-                height: "300px",
-                objectFit: "cover",
-                borderRadius: "10px",
-              }}
-            />
-            <p
-              style={{
-                marginTop: "10px",
-                fontSize: "18px",
-                fontFamily: "Georgia, serif",
-                color: "#333",
-              }}
-            >
-              {item.cardTitle}
-            </p>
-            <div
-              style={{
-                marginTop: "8px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <span style={{ fontSize: "16px", color: "#444" }}>
-                📍 {item.address}
-              </span>
-              <div style={{ display: "flex", gap: "8px" }}>
-                {/* HIDE VIEW BUTTON FOR DACHEPALLI & KANCHIKACHERLA */}
-                {!item.hideMap && (
+      <div className="campus-grid">
+        {campuses.map((item, index) => (
+          <ScrollReveal key={item.id} className="location-card-reveal" delay={(index % 4) * 0.06}>
+            <article className="location-card">
+              <img
+                className="location-card-image"
+                src={item.campusImage}
+                alt={item.cardTitle}
+              />
+              <div className="location-card-content">
+              <p className="location-card-title">
+                {item.cardTitle}
+              </p>
+              <div className="location-card-footer">
+                <span className="location-card-address">
+                  <MapPin size={15} aria-hidden="true" /> {item.address}
+                </span>
+                <div className="location-card-actions">
+                  {!item.hideMap && (
+                    <button
+                      onClick={() => window.open(item.mapsUrl, "_blank")}
+                      className="location-card-button"
+                      type="button"
+                    >
+                      <FaMapMarkerAlt aria-hidden="true" /> View
+                    </button>
+                  )}
                   <button
-                    style={{
-                      padding: "8px 14px",
-                      borderRadius: "20px",
-                      border: "1px solid #000",
-                      backgroundColor: "#fff",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "6px",
-                    }}
-                    onClick={() => window.open(item.mapsUrl, "_blank")}
+                    onClick={() => openMore(item)}
+                    className="location-card-button location-card-button-primary"
+                    type="button"
                   >
-                    <FaMapMarkerAlt /> View
+                    More
                   </button>
-                )}
-                <button
-                  style={{
-                    padding: "8px 14px",
-                    borderRadius: "20px",
-                    border: "1px solid #000",
-                    backgroundColor: "#fff",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => openMore(item)}
-                >
-                  More
-                </button>
+                </div>
               </div>
-            </div>
-          </div>
+              </div>
+            </article>
+          </ScrollReveal>
         ))}
       </div>
 
@@ -343,141 +303,95 @@ function Sundays() {
       {openModal && modalItem && (
         <div
           onClick={closeModal}
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.5)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 9999,
-            padding: "15px",
-          }}
+          className="locations-modal-backdrop"
+          role="presentation"
         >
           <div
-            onClick={(e) => e.stopPropagation()}
+            onClick={(event) => event.stopPropagation()}
             className="modal-container"
-            style={{
-              width: "100%",
-              maxWidth: "1000px",
-              maxHeight: "100vh",
-              background: "#fff",
-              borderRadius: "12px",
-              overflowY: "auto",
-              display: "flex",
-              position: "relative",
-            }}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="location-modal-title"
           >
-            {/* CLOSE BUTTON */}
             <button
               onClick={closeModal}
               className="modal-close"
-              style={{
-                position: "sticky",
-                top: "5px",
-                right: "10px",
-                marginLeft: "auto",
-                fontSize: "20px",
-                background: "#fff",
-                border: "none",
-                cursor: "pointer",
-                zIndex: 100,
-              }}
+              aria-label="Close location details"
             >
-              ✖
+              <X size={20} aria-hidden="true" />
             </button>
 
-            {/* LEFT SIDE */}
-            <div className="modal-left" style={{ width: "50%", padding: "25px" }}>
-              <h3 style={{ fontSize: "20px", fontFamily: "Georgia, serif" }}>
-                {modalItem.title}
-              </h3>
-              <hr />
-              <h4>Address</h4>
-              <p>{modalItem.address}</p>
+            <div className="modal-left">
+              <span className="theme-eyebrow">Mahima Church location</span>
+              <h2 id="location-modal-title">{modalItem.cardTitle}</h2>
+              <p className="location-modal-address"><MapPin size={17} aria-hidden="true" /> {modalItem.address}</p>
 
-              {/* HIDE DIRECTIONS BUTTON IN MODAL */}
-              {!modalItem.hideMap && (
-                <button
-                  onClick={() => window.open(modalItem.mapsUrl, "_blank")}
-                  style={{
-                    padding: "8px 8px",
-                    borderRadius: "8px",
-                    border: "1px solid #000",
-                    background: "white",
-                    cursor: "pointer",
-                    marginBottom: "10px",
-                  }}
-                >
-                  Directions
-                </button>
-              )}
+              <div className="location-detail-block">
+                <h3><Clock3 size={18} aria-hidden="true" /> Worship times</h3>
+                <ul className="location-detail-list">
+                  {modalItem.worshipTimes.map((time) => <li key={time}>{time}</li>)}
+                </ul>
+              </div>
 
-              <h4>Worship Times</h4>
-              {modalItem.worshipTimes.map((t, idx) => (
-                <p key={idx}>{t}</p>
-              ))}
-              <h4 style={{ marginTop: "2px" }}>Contacts</h4>
-              {modalItem.contacts.map((c, idx) => (
-                <p key={idx}>{c}</p>
-              ))}
+              <div className="location-detail-block">
+                <h3>Connect with the team</h3>
+                <ul className="location-contact-list">
+                  {modalItem.contacts.map((contact) => <li key={contact}>{contact}</li>)}
+                </ul>
+              </div>
 
-              {/* DYNAMIC PASTOR SECTION */}
               {modalItem.pastors ? (
-                <>
-                  <h4 style={{ marginTop: "2px" }}>Campus Pastors</h4>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <div className="location-detail-block">
+                  <h3>Campus ministry team</h3>
+                  <div className="location-pastors">
                     {modalItem.pastors.map((pastor, index) => (
                       <div
                         key={index}
-                        style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                        className="location-pastor"
                       >
                         <img
                           src={pastor.image}
                           alt={pastor.name}
-                          style={{
-                            width: "75px",
-                            height: "65px",
-                            borderRadius: "5px",
-                            objectFit: "cover",
-                          }}
                         />
                         <span>{pastor.name}</span>
                       </div>
                     ))}
                   </div>
-                </>
+                </div>
               ) : (
-                <>
-                  <h4 style={{ marginTop: "2px" }}>Campus Pastor</h4>
-                  <div style={{ display: "flex", gap: "2px", alignItems: "center" }}>
+                <div className="location-detail-block">
+                  <h3>Campus pastor</h3>
+                  <div className="location-pastor">
                     <img
                       src={modalItem.pastorImage}
                       alt={modalItem.pastorName}
-                      style={{
-                        width: "75px",
-                        height: "65px",
-                        borderRadius: "5px",
-                        objectFit: "cover",
-                      }}
                     />
                     <span>{modalItem.pastorName}</span>
                   </div>
-                </>
+                </div>
+              )}
+
+              {!modalItem.hideMap && (
+                <a
+                  className="location-directions-button"
+                  href={modalItem.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Navigation size={17} aria-hidden="true" /> Get directions
+                </a>
               )}
             </div>
 
-            {/* RIGHT SIDE IMAGE */}
-            <div className="modal-right" style={{ width: "50%", minHeight: "300px" }}>
+            <div className="modal-right">
               <img
                 src={modalItem.campusImage}
-                alt={modalItem.title}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
+                alt={modalItem.cardTitle}
               />
+              <div className="location-image-caption">
+                <span className="theme-eyebrow">A place to belong</span>
+                <p>{modalItem.title}</p>
+              </div>
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ const Hero = () => {
     width: "100%",
     minHeight: "85vh",
     marginTop: "1px", // <-- ADD THIS: Adjust this value to match your navbar's exact height
-    backgroundImage: `url(${images[index]})`,
+    backgroundImage: `linear-gradient(115deg, rgba(31, 79, 163, 0.78), rgba(158, 11, 34, 0.38)), url(${images[index]})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     transition: "background-image 1s ease-in-out",
@@ -43,7 +43,7 @@ const Hero = () => {
     alignItems: "center",
     justifyContent: "center",
     padding: "40px",
-    color: "#f6efe9"
+    color: "#ffffff"
   };
 
   const titleStyle = {
@@ -70,7 +70,7 @@ const Hero = () => {
   };
 
   return (
-    <header style={heroStyle}>
+    <header className="home-hero" style={heroStyle}>
       <div className="text-center">
         <h1 style={titleStyle}>Mahima Church</h1>
         <h2 style={subtitleStyle}>
@@ -91,5 +91,4 @@ const Hero = () => {
 };
 
 export default Hero;
-
 
