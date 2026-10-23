@@ -4,7 +4,7 @@
   margin: 0 auto;
   padding: 60px 20px;
   font-family: "Inter", "Segoe UI", sans-serif;
-  color: #2c3e50;
+  color: var(--brand-ink, #2c3e50);
   line-height: 1.7;
 }
 
@@ -12,26 +12,68 @@
 .beliefs-hero {
   text-align: center;
   margin-bottom: 80px;
+  padding: 20px 10px;
+  position: relative;
 }
 
 .beliefs-hero h1 {
   font-size: 2.8rem;
   font-weight: 700;
   margin-bottom: 12px;
+  color: var(--brand-blue, #1f4fa3);
+  animation: beliefsTitleIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes beliefsTitleIn {
+  0%   { opacity: 0; transform: translateY(30px); letter-spacing: 10px; filter: blur(8px); }
+  100% { opacity: 1; transform: translateY(0); letter-spacing: 0; filter: blur(0); }
 }
 
 .beliefs-subtitle {
   font-size: 1.25rem;
-  color: #6b7280;
+  color: var(--brand-muted, #6b7280);
   font-style: italic;
+  animation: beliefsSubIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+
+@keyframes beliefsSubIn {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* Mission */
 .beliefs-mission {
-  background: linear-gradient(135deg, #f8fafc, #eef2f7);
+  background: var(--brand-soft, #fdf1f5);
   padding: 60px 40px;
-  border-radius: 16px;
+  border-radius: 18px;
   margin-bottom: 80px;
+  border: 1px solid var(--brand-border, #e6e9ee);
+  box-shadow: 0 12px 32px rgba(27, 39, 62, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+}
+
+.beliefs-mission::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--brand-primary, #c8102e);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.beliefs-mission:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(27, 39, 62, 0.13);
+}
+
+.beliefs-mission:hover::before {
+  transform: scaleY(1);
 }
 
 .mission-content {
@@ -43,13 +85,16 @@
 .mission-content h2 {
   font-size: 2rem;
   margin-bottom: 20px;
+  color: var(--brand-blue, #1f4fa3);
 }
 
 .mission-statement {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--brand-ink, #1f2937);
   margin-bottom: 30px;
+  font-family: "Playfair Display", Georgia, serif;
+  line-height: 1.4;
 }
 
 .mission-list {
@@ -63,19 +108,30 @@
 .mission-list li {
   padding: 10px 0 10px 28px;
   position: relative;
+  transition: color 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .mission-list li::before {
   content: "✝";
   position: absolute;
   left: 0;
-  color: #2563eb;
+  color: var(--brand-primary, #2563eb);
   font-weight: bold;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mission-list li:hover {
+  color: var(--brand-primary, #c8102e);
+  transform: translateX(6px);
+}
+
+.mission-list li:hover::before {
+  transform: rotate(360deg) scale(1.15);
 }
 
 .mission-note {
   font-size: 1rem;
-  color: #374151;
+  color: var(--brand-muted, #374151);
 }
 
 /* Ministries */
@@ -87,13 +143,14 @@
   text-align: center;
   font-size: 2.2rem;
   margin-bottom: 20px;
+  color: var(--brand-blue, #1f4fa3);
 }
 
 .section-intro {
   text-align: center;
   max-width: 750px;
   margin: 0 auto 50px;
-  color: #4b5563;
+  color: var(--brand-muted, #4b5563);
 }
 
 .pillars-grid {
@@ -105,39 +162,74 @@
 .pillar-card {
   background: #ffffff;
   padding: 32px 26px;
-  border-radius: 14px;
+  border-radius: 16px;
   text-align: center;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+}
+
+.pillar-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--brand-primary, #c8102e);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .pillar-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+}
+
+.pillar-card:hover::before {
+  transform: scaleX(1);
 }
 
 .pillar-card h3 {
   font-size: 1.3rem;
   margin-bottom: 14px;
-  color: #1f2937;
+  color: var(--brand-ink, #1f2937);
+  transition: color 0.35s ease, letter-spacing 0.35s ease;
+}
+
+.pillar-card:hover h3 {
+  color: var(--brand-primary, #c8102e);
+  letter-spacing: 0.3px;
 }
 
 /* Holistic */
 .beliefs-holistic {
-  background-color: #f9fafb;
+  background-color: var(--brand-soft, #f9fafb);
   padding: 60px 40px;
-  border-radius: 16px;
+  border-radius: 18px;
   text-align: center;
+  border: 1px solid var(--brand-border, #e6e9ee);
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+}
+
+.beliefs-holistic:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(27, 39, 62, 0.11);
 }
 
 .beliefs-holistic h2 {
   font-size: 2rem;
   margin-bottom: 20px;
+  color: var(--brand-blue, #1f4fa3);
 }
 
 .holistic-intro {
   max-width: 700px;
   margin: 0 auto 30px;
+  color: var(--brand-muted, #4b5563);
 }
 
 .holistic-list {
@@ -152,19 +244,30 @@
   margin-bottom: 14px;
   padding-left: 24px;
   position: relative;
+  transition: color 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .holistic-list li::before {
   content: "✔";
   position: absolute;
   left: 0;
-  color: #16a34a;
+  color: var(--brand-green, #16a34a);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.holistic-list li:hover {
+  color: var(--brand-green, #16a34a);
+  transform: translateX(6px);
+}
+
+.holistic-list li:hover::before {
+  transform: scale(1.3);
 }
 
 .holistic-note {
   max-width: 700px;
   margin: 0 auto;
-  color: #374151;
+  color: var(--brand-muted, #374151);
 }
 
 /* Responsive */
@@ -176,5 +279,27 @@
   .beliefs-mission,
   .beliefs-holistic {
     padding: 40px 20px;
+  }
+
+  .pillars-grid {
+    gap: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beliefs-hero h1,
+  .beliefs-subtitle,
+  .beliefs-mission,
+  .beliefs-mission::before,
+  .pillar-card,
+  .pillar-card::before,
+  .pillar-card h3,
+  .beliefs-holistic,
+  .holistic-list li,
+  .holistic-list li::before,
+  .mission-list li,
+  .mission-list li::before {
+    animation: none !important;
+    transition: none !important;
   }
 }

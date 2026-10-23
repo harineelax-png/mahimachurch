@@ -3,6 +3,41 @@
   background: #fff;
 }
 
+/* ============================================================
+   REVEAL ANIMATIONS (Direction-aware 3D flip + blur)
+   ============================================================ */
+.prayer-reveal {
+  opacity: 0;
+  filter: blur(12px);
+  transform: perspective(1200px) translateY(60px) rotateX(-15deg) scale(0.92);
+  transition:
+    opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.prayer-reveal.from-down {
+  opacity: 0;
+  filter: blur(12px);
+  transform: perspective(1200px) translateY(60px) rotateX(-15deg) scale(0.92);
+}
+
+.prayer-reveal.from-up {
+  opacity: 0;
+  filter: blur(12px);
+  transform: perspective(1200px) translateY(-60px) rotateX(15deg) scale(0.92);
+}
+
+.prayer-reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: perspective(1200px) translateY(0) rotateX(0) scale(1);
+}
+
+/* ============================================================
+   HERO ANIMATIONS
+   ============================================================ */
 .prayer-hero {
   position: relative;
   display: flex;
@@ -26,6 +61,12 @@
   margin: 14px 0 18px;
   font-size: clamp(2.7rem, 7vw, 5rem);
   line-height: 1.05;
+  animation: heroTitleIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes heroTitleIn {
+  0% { opacity: 0; transform: translateY(30px); letter-spacing: 10px; filter: blur(8px); }
+  100% { opacity: 1; transform: translateY(0); letter-spacing: 0; filter: blur(0); }
 }
 
 .prayer-hero-content > p {
@@ -42,10 +83,12 @@
   color: var(--brand-primary);
   font-weight: 700;
   text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .prayer-hero-link:hover {
   color: var(--brand-deep);
+  transform: translateX(6px);
 }
 
 .prayer-hero-symbol {
@@ -56,8 +99,17 @@
   font-size: clamp(14rem, 30vw, 25rem);
   line-height: 1;
   user-select: none;
+  animation: floatCross 6s ease-in-out infinite;
 }
 
+@keyframes floatCross {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+/* ============================================================
+   INTRO SECTION
+   ============================================================ */
 .prayer-intro-section {
   padding: 70px 0;
   background:
@@ -73,6 +125,12 @@
   background: #fff;
   box-shadow: var(--brand-shadow);
   text-align: center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+}
+
+.prayer-intro-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(27, 39, 62, 0.12);
 }
 
 .prayer-intro-icon {
@@ -84,6 +142,11 @@
   border-radius: 19px;
   color: var(--brand-primary);
   background: var(--brand-soft);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.prayer-intro-card:hover .prayer-intro-icon {
+  transform: rotate(-10deg) scale(1.1);
 }
 
 .prayer-intro-card h2 {
@@ -98,6 +161,9 @@
   font-size: 1rem;
 }
 
+/* ============================================================
+   FORM SECTION
+   ============================================================ */
 .prayer-form-section {
   padding: 68px 0 96px;
   background: linear-gradient(145deg, #f7f9fc, var(--brand-soft) 92%);
@@ -116,6 +182,12 @@
   color: #fff;
   background: linear-gradient(145deg, var(--brand-blue), #173b79);
   box-shadow: 0 20px 52px rgba(31, 79, 163, 0.2);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+}
+
+.prayer-form-aside:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 64px rgba(31, 79, 163, 0.28);
 }
 
 .prayer-form-aside::after {
@@ -129,6 +201,12 @@
   box-shadow: 0 0 0 28px rgba(255, 255, 255, 0.045), 0 0 0 56px rgba(255, 255, 255, 0.035);
   content: "";
   pointer-events: none;
+  animation: glowPulse 8s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
 }
 
 .prayer-form-aside .theme-eyebrow {
@@ -190,6 +268,12 @@
   border-radius: 24px;
   background: #fff;
   box-shadow: 0 16px 44px rgba(27, 39, 62, 0.08);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+}
+
+.prayer-form-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 56px rgba(27, 39, 62, 0.12);
 }
 
 .prayer-form .form-label {
@@ -210,6 +294,7 @@
   color: var(--brand-ink) !important;
   background: #fbfcfe !important;
   box-shadow: none;
+  transition: all 0.3s ease;
 }
 
 .prayer-form .pill-input {
@@ -230,6 +315,7 @@
   border-color: var(--brand-green) !important;
   background: #fff !important;
   box-shadow: 0 0 0 4px rgba(76, 175, 58, 0.12) !important;
+  transform: translateY(-2px);
 }
 
 .prayer-submit-row {
@@ -251,7 +337,26 @@
   background: var(--brand-primary) !important;
   font-weight: 600;
   letter-spacing: 0;
+  position: relative;
+  overflow: hidden;
   transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* Shimmer effect on the button */
+.prayer-form .dark-submit-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.prayer-form .dark-submit-btn:hover::after {
+  left: 150%;
 }
 
 .prayer-form .dark-submit-btn:hover:not(:disabled) {
@@ -265,6 +370,12 @@
   padding: 12px 14px;
   border-radius: 10px;
   font-size: 0.88rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .prayer-form-status.success {
@@ -279,6 +390,9 @@
   background: rgba(200, 16, 46, 0.06);
 }
 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 767px) {
   .prayer-hero {
     min-height: 390px;
@@ -301,5 +415,50 @@
 
   .prayer-form-aside {
     min-height: auto;
+  }
+
+  .prayer-reveal {
+    transform: perspective(1200px) translateY(40px) rotateX(-8deg) scale(0.95);
+  }
+  
+  .prayer-reveal.from-up {
+    transform: perspective(1200px) translateY(-40px) rotateX(8deg) scale(0.95);
+  }
+  
+  .prayer-form-aside:hover,
+  .prayer-form-card:hover,
+  .prayer-intro-card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .prayer-reveal,
+  .prayer-reveal.from-down,
+  .prayer-reveal.from-up,
+  .prayer-reveal.is-visible {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+  .prayer-hero-symbol,
+  .prayer-hero h1,
+  .prayer-form-aside::after,
+  .prayer-form .dark-submit-btn::after,
+  .prayer-form-status {
+    animation: none !important;
+    transition: none !important;
+  }
+  .prayer-form-aside:hover,
+  .prayer-form-card:hover,
+  .prayer-intro-card:hover,
+  .prayer-form .pill-input:focus,
+  .prayer-form .box-input:focus {
+    transform: none !important;
   }
 }

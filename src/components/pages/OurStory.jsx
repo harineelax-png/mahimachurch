@@ -1,23 +1,73 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./OurStory.css";
-import ScrollReveal from "../ScrollReveal";
+// import ScrollReveal from "../ScrollReveal"; // kept for reference; replaced by RevealOnScroll below
+
+/* =====================================================================
+   Direction-aware scroll reveal (fires scrolling DOWN and UP; re-triggers)
+   ===================================================================== */
+const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  const [direction, setDirection] = useState("down");
+  const lastY = useRef(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const y = window.scrollY || window.pageYOffset || 0;
+      if (y > lastY.current) setDirection("down");
+      else if (y < lastY.current) setDirection("up");
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+    observer.observe(el);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+    };
+  }, []);
+
+  const stateClass = visible
+    ? "is-visible"
+    : direction === "up"
+    ? "from-up"
+    : "from-down";
+
+  return (
+    <div
+      ref={ref}
+      className={`ourstory-reveal ${stateClass} ${className}`}
+      style={{ transitionDelay: `${delay}s` }}
+    >
+      {children}
+    </div>
+  );
+};
 
 function OurStory() {
   return (
     <div className="ourstory-container">
       
       {/* Hero Section */}
-      <ScrollReveal className="ourstory-reveal">
+      <RevealOnScroll className="ourstory-reveal" delay={0}>
       <section className="ourstory-hero">
         <h1>Our Story</h1>
         <p className="ourstory-tagline">
           A Vision Given by Christ. A Journey of Faith. A Legacy of Grace.
         </p>
       </section>
-      </ScrollReveal>
+      </RevealOnScroll>
 
       {/* Intro */}
-      <ScrollReveal className="ourstory-reveal">
+      <RevealOnScroll className="ourstory-reveal" delay={0}>
       <section className="ourstory-section">
         <p className="ourstory-text">
           The story of <strong>Mahima Church</strong> is a testimony to the faithfulness of God and the obedience of one servant who dared to respond to a divine calling.
@@ -34,10 +84,10 @@ function OurStory() {
         </p>
 
       </section>
-      </ScrollReveal>
+      </RevealOnScroll>
 
       {/* Timeline Section */}
-      <ScrollReveal className="ourstory-reveal">
+      <RevealOnScroll className="ourstory-reveal" delay={0.05}>
       <section className="ourstory-section light">
         <h2>The Early Years (1988–1991)</h2>
         <p className="ourstory-text">
@@ -67,10 +117,10 @@ function OurStory() {
           a name that reflects the<strong>glory (Mahima) of God</strong>  revealed through the gospel.
         </p>
       </section>
-      </ScrollReveal>
+      </RevealOnScroll>
 
       {/* Growth Section */}
-      <ScrollReveal className="ourstory-reveal">
+      <RevealOnScroll className="ourstory-reveal" delay={0.1}>
       <section className="ourstory-section">
         <h2>GROWTH THROUGH PERSEVERANCE: BUILDING THE CHURCH (1992–2010)</h2>
         <p className="ourstory-text">
@@ -106,10 +156,10 @@ function OurStory() {
         </p>
 
       </section>
-      </ScrollReveal>
+      </RevealOnScroll>
 
       {/* Mission Section */}
-      <ScrollReveal className="ourstory-reveal">
+      <RevealOnScroll className="ourstory-reveal" delay={0.05}>
       <section className="ourstory-section light">
         <h2>A MISSION-MINDED CHURCH: REACHING THE LOST</h2>
 
@@ -139,10 +189,10 @@ function OurStory() {
         
 
       </section>
-      </ScrollReveal>
+      </RevealOnScroll>
 
       {/* Today Section */}
-      <ScrollReveal className="ourstory-reveal">
+      <RevealOnScroll className="ourstory-reveal" delay={0.1}>
       <section className="ourstory-section highlight">
         <h2>Today: A Growing Family of Faith</h2>
 
@@ -161,10 +211,10 @@ function OurStory() {
           </div>
         </div>
       </section>
-      </ScrollReveal>
+      </RevealOnScroll>
 
       {/* Future */}
-      <ScrollReveal className="ourstory-reveal">
+      <RevealOnScroll className="ourstory-reveal" delay={0.05}>
       <section className="ourstory-section">
         <h2>Looking Ahead</h2>
         <p className="ourstory-text">
@@ -182,7 +232,7 @@ function OurStory() {
           All glory, honor, and praise belong to our Lord and Savior Jesus Christ, who has been faithful in every season
         </p>
       </section>
-      </ScrollReveal>
+      </RevealOnScroll>
 
     </div>
   );

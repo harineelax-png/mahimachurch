@@ -1,9 +1,59 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { ArrowRight, HeartHandshake, LockKeyhole, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import ScrollReveal from "../ScrollReveal";
 import "./PrayerRequest.css";
+
+/* =====================================================================
+   Direction-aware scroll reveal (fires scrolling DOWN and UP; re-triggers)
+   ===================================================================== */
+const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  const [direction, setDirection] = useState("down");
+  const lastY = useRef(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const y = window.scrollY || window.pageYOffset || 0;
+      if (y > lastY.current) setDirection("down");
+      else if (y < lastY.current) setDirection("up");
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+    observer.observe(el);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+    };
+  }, []);
+
+  const stateClass = visible
+    ? "is-visible"
+    : direction === "up"
+    ? "from-up"
+    : "from-down";
+
+  return (
+    <div
+      ref={ref}
+      className={`prayer-reveal ${stateClass} ${className}`}
+      style={{ transitionDelay: `${delay}s` }}
+    >
+      {children}
+    </div>
+  );
+};
 
 function PrayerRequest() {
   const formRef = useRef();
@@ -39,7 +89,7 @@ function PrayerRequest() {
   return (
     <main className="prayer-page-wrapper prayer-page">
       <section className="prayer-hero">
-        <ScrollReveal className="prayer-hero-content">
+        <RevealOnScroll className="prayer-hero-content">
           <span className="theme-eyebrow">You are not alone</span>
           <h1>How can we pray for you?</h1>
           <p>
@@ -48,7 +98,7 @@ function PrayerRequest() {
           <a className="prayer-hero-link" href="#prayer-form">
             Share a request <ArrowRight size={17} aria-hidden="true" />
           </a>
-        </ScrollReveal>
+        </RevealOnScroll>
         <div className="prayer-hero-symbol" aria-hidden="true">✝</div>
       </section>
 
@@ -56,7 +106,7 @@ function PrayerRequest() {
         <Container>
           <Row className="justify-content-center">
             <Col lg={9}>
-              <ScrollReveal className="prayer-intro-card">
+              <RevealOnScroll className="prayer-intro-card">
                 <span className="prayer-intro-icon"><HeartHandshake size={25} aria-hidden="true" /></span>
                 <span className="theme-eyebrow">A moment to pause</span>
                 <h2>You don’t have to walk through it alone.</h2>
@@ -64,7 +114,7 @@ function PrayerRequest() {
                   Prayer is a way to bring your hopes, fears, and gratitude before God. In times of joy or struggle,
                   it can remind us that we are never alone. Share what is on your heart, and our team will pray with you.
                 </p>
-              </ScrollReveal>
+              </RevealOnScroll>
             </Col>
           </Row>
         </Container>
@@ -74,7 +124,7 @@ function PrayerRequest() {
         <Container>
           <Row className="g-4 align-items-stretch">
             <Col lg={5}>
-              <ScrollReveal className="prayer-form-aside">
+              <RevealOnScroll className="prayer-form-aside">
                 <span className="theme-eyebrow">We’re listening</span>
                 <h2>Share your request in confidence.</h2>
                 <p>
@@ -88,11 +138,11 @@ function PrayerRequest() {
                   <span>“Cast all your anxiety on him because he cares for you.”</span>
                   <small>1 Peter 5:7</small>
                 </div>
-              </ScrollReveal>
+              </RevealOnScroll>
             </Col>
 
             <Col lg={7}>
-              <ScrollReveal className="prayer-form-card" delay={0.1}>
+              <RevealOnScroll className="prayer-form-card" delay={0.1}>
                 <Form ref={formRef} onSubmit={sendEmail} className="prayer-form">
                   <Row className="g-3">
                     <Col sm={6}>
@@ -147,7 +197,7 @@ function PrayerRequest() {
                     )}
                   </Row>
                 </Form>
-              </ScrollReveal>
+              </RevealOnScroll>
             </Col>
           </Row>
         </Container>

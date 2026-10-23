@@ -25,6 +25,146 @@ import pastorGurvaya from "./../../images/gurvaya1.jpg";
 
 import pastorDachepalli from "./../../images/image22.jpg";
 
+const locationStyles = `
+  .locations-page .campus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 60px auto 0;
+    padding: 0 20px;
+    align-items: stretch;
+  }
+
+  .locations-page .location-card-reveal {
+    display: flex;
+    min-width: 0;
+    height: 100%;
+  }
+
+  .locations-page .location-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(27, 39, 62, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid var(--brand-border, #e6e9ee);
+  }
+
+  .locations-page .location-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(27, 39, 62, 0.15);
+  }
+
+  .locations-page .location-card-image {
+    width: 100%;
+    height: 220px !important;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .locations-page .location-card:hover .location-card-image {
+    transform: scale(1.05);
+  }
+
+  .locations-page .location-card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 24px;
+    background: #ffffff;
+  }
+
+  .locations-page .location-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--brand-ink, #1e2433);
+    margin: 0 0 16px;
+    flex-grow: 1;
+    line-height: 1.4;
+  }
+
+  /* Location text above the buttons */
+  .locations-page .location-card-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: auto;
+    width: 100%;
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .locations-page .location-card-address {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: var(--brand-muted, #5b6475);
+    font-weight: 500;
+  }
+
+  /* Buttons side by side */
+  .locations-page .location-card-actions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .locations-page .location-card-actions button {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .locations-page .location-card-actions button.location-card-button {
+    background: #ffffff;
+    border: 1px solid var(--brand-border, #e6e9ee);
+    color: var(--brand-ink, #1e2433);
+  }
+
+  .locations-page .location-card-actions button.location-card-button:hover {
+    background: var(--brand-soft, #fdf1f5);
+    border-color: var(--brand-primary, #c8102e);
+    color: var(--brand-primary, #c8102e);
+  }
+
+  .locations-page .location-card-actions button.location-card-button-primary {
+    background: var(--brand-primary, #c8102e);
+    border: 1px solid var(--brand-primary, #c8102e);
+    color: #ffffff;
+  }
+
+  .locations-page .location-card-actions button.location-card-button-primary:hover {
+    background: var(--brand-deep, #9e0b22);
+    border-color: var(--brand-deep, #9e0b22);
+    color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    .locations-page .campus-grid {
+      grid-template-columns: 1fr;
+      padding: 0 16px;
+    }
+    .locations-page .location-card-image {
+      height: 200px !important;
+    }
+  }
+`;
+
 function Sundays() {
   const [openModal, setOpenModal] = useState(false);
   const [modalItem, setModalItem] = useState(null);
@@ -54,7 +194,7 @@ function Sundays() {
     {
       id: "prasadam",
       title: "Mahima Prayer Tower - Prasadamapdu",
-      cardTitle: "Mahima Rock Church - PrasadamPadu",
+      cardTitle: "Mahima Rock Church",
       address: "Prasadamapdu",
       mapsUrl:
         "https://www.google.com/maps/search/Mahima Rock Church,6-134, BMPS Rd, SER Center, Prasadampadu, currency nagar, Vijayawada, Andhra Pradesh 521108",
@@ -73,7 +213,7 @@ function Sundays() {
     {
       id: "currency",
       title: "Mahima Prarthana Mandiram – Currency Nagar / Ramavarappadu",
-      cardTitle: "Mahima Prathana Mandiram - Currency Nagar",
+      cardTitle: "Mahima Prathana Mandiram",
       address: "Currency Nagar / Ramavarappadu",
       mapsUrl:
         "https://www.google.com/maps/search/Mahima Church,GMCG+CWC, currency nagar, Vijayawada, Andhra Pradesh 520008",
@@ -89,7 +229,7 @@ function Sundays() {
     {
       id: "thullur",
       title: "Mahima Prayer Tower – Thulluru",
-      cardTitle: "Mahima Prayer Tower - Thullur",
+      cardTitle: "Mahima Prayer Tower",
       address: "Thulluru",
       mapsUrl:
         "https://www.google.com/maps/search/Mahima Church,GFH9+74W, Thullur, Amaravati, Andhra Pradesh 522237",
@@ -108,7 +248,7 @@ function Sundays() {
     {
       id: "mandhadum",
       title: "Mahima Prayer Tower – Mandhadum",
-      cardTitle: "Mahima Prayer Tower - Mandhadum",
+      cardTitle: "Mahima Prayer Tower",
       address: "Mandhadum",
       mapsUrl:
         "https://www.google.com/maps/search/Mahima Church,GG9C+7R7, Mandadam, Amaravati, Andhra Pradesh 522241",
@@ -127,7 +267,7 @@ function Sundays() {
     {
       id: "kondapur",
       title: "Mahima Prayer Tower – Kondapur, Hyderabad",
-      cardTitle: "Mahima Prayer Tower - Kondapur",
+      cardTitle: "Mahima Prayer Tower",
       address: "Kondapur, Hyderabad",
       mapsUrl:
         "https://www.google.com/maps/search/Mahima Prayer Tower,F9F7+4MX, RTO Kondapur Rd, Kondapur, New Hafeezpet, Bikshapathi Nagar, Hyderabad, Telangana 500084",
@@ -146,7 +286,7 @@ function Sundays() {
     {
       id: "dachepalli",
       title: "Mahima Prayer Tower – Dachepalli",
-      cardTitle: "Mahima Church - Dachepalli",
+      cardTitle: "Mahima Church",
       address: "Dachepalli",
       mapsUrl: "https://www.google.com/maps/search/Community+Hub",
       campusImage: imag6,
@@ -160,12 +300,12 @@ function Sundays() {
         "Pastor Yehoshuva – +91 97056 44966",
         "Bro. Niranjan – +91 95814 94946",
       ],
-      hideMap: true, // Hides View/Directions
+      hideMap: true, // Kept from your original code
     },
     {
       id: "kanchikacherla",
       title: "Mahima Prayer Tower – Kanchikacherla",
-      cardTitle: "Mahima Church - Kanchikacherla",
+      cardTitle: "Mahima Church",
       address: "Kanchikacherla",
       mapsUrl: "https://www.google.com/maps/search/East+Campus",
       campusImage: imag7,
@@ -181,7 +321,7 @@ function Sundays() {
         "Bro. Devaraju – +91 87123 90777",
         "Bro. Cephas – +91 83095 09297",
       ],
-      hideMap: true, // Hides View/Directions
+      hideMap: true, // Kept from your original code
     },
   ];
 
@@ -196,207 +336,222 @@ function Sundays() {
   };
 
   return (
-    <div
-      className="locations-page"
-      style={{
-        backgroundColor: "#f8eee6",
-        minHeight: "100vh",
-        padding: "120px 20px",
-        textAlign: "center",
-      }}
-    >
-      {/* Title */}
-      <h1
-        className="locations-title"
-        style={{
-          fontSize: "80px",
-          fontWeight: "400",
-          fontFamily: "Georgia, serif",
-          marginBottom: "30px",
-        }}
-      >
-        You belong here
-      </h1>
-
-      {/* Subtitle */}
-      <p
-        style={{
-          maxWidth: "700px",
-          margin: "0 auto",
-          fontSize: "20px",
-          lineHeight: "1.6",
-          color: "#333",
-        }}
-      >
-        Visiting for the first time can be overwhelming, but it doesn’t have to
-        be! Whether you're checking things out or looking for a place to call
-        home, you belong here.
-      </p>
-
-      {/* Header Row */}
+    <>
+      <style>{locationStyles}</style>
       <div
+        className="locations-page"
         style={{
-          marginTop: "150px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          maxWidth: "900px",
-          margin: "150px auto 0 auto",
+          backgroundColor: "#f8eee6",
+          minHeight: "100vh",
+          padding: "120px 20px",
+          textAlign: "center",
         }}
       >
-        <h2
+        {/* Title */}
+        <h1
+          className="locations-title"
           style={{
-            fontSize: "36px",
+            fontSize: "80px",
+            fontWeight: "400",
             fontFamily: "Georgia, serif",
-            fontWeight: "500",
+            marginBottom: "30px",
           }}
         >
-          Locations
-        </h2>
-        
-      </div>
+          You belong here
+        </h1>
 
-      {/* GRID */}
-      <div className="campus-grid">
-        {campuses.map((item, index) => (
-          <ScrollReveal key={item.id} className="location-card-reveal" delay={(index % 4) * 0.06}>
-            <article className="location-card">
-              <img
-                className="location-card-image"
-                src={item.campusImage}
-                alt={item.cardTitle}
-              />
-              <div className="location-card-content">
-              <p className="location-card-title">
-                {item.cardTitle}
-              </p>
-              <div className="location-card-footer">
-                <span className="location-card-address">
-                  <MapPin size={15} aria-hidden="true" /> {item.address}
-                </span>
-                <div className="location-card-actions">
-                  {!item.hideMap && (
-                    <button
-                      onClick={() => window.open(item.mapsUrl, "_blank")}
-                      className="location-card-button"
-                      type="button"
-                    >
-                      <FaMapMarkerAlt aria-hidden="true" /> View
-                    </button>
-                  )}
-                  <button
-                    onClick={() => openMore(item)}
-                    className="location-card-button location-card-button-primary"
-                    type="button"
-                  >
-                    More
-                  </button>
-                </div>
-              </div>
-              </div>
-            </article>
-          </ScrollReveal>
-        ))}
-      </div>
-
-      {/* MODAL */}
-      {openModal && modalItem && (
-        <div
-          onClick={closeModal}
-          className="locations-modal-backdrop"
-          role="presentation"
+        {/* Subtitle */}
+        <p
+          style={{
+            maxWidth: "700px",
+            margin: "0 auto",
+            fontSize: "20px",
+            lineHeight: "1.6",
+            color: "#333",
+          }}
         >
-          <div
-            onClick={(event) => event.stopPropagation()}
-            className="modal-container"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="location-modal-title"
+          Visiting for the first time can be overwhelming, but it doesn’t have to
+          be! Whether you're checking things out or looking for a place to call
+          home, you belong here.
+        </p>
+
+        {/* Header Row */}
+        <div
+          style={{
+            marginTop: "150px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            maxWidth: "900px",
+            margin: "150px auto 0 auto",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "36px",
+              fontFamily: "Georgia, serif",
+              fontWeight: "500",
+            }}
           >
-            <button
-              onClick={closeModal}
-              className="modal-close"
-              aria-label="Close location details"
-            >
-              <X size={20} aria-hidden="true" />
-            </button>
+            Locations
+          </h2>
+        </div>
 
-            <div className="modal-left">
-              <span className="theme-eyebrow">Mahima Church location</span>
-              <h2 id="location-modal-title">{modalItem.cardTitle}</h2>
-              <p className="location-modal-address"><MapPin size={17} aria-hidden="true" /> {modalItem.address}</p>
-
-              <div className="location-detail-block">
-                <h3><Clock3 size={18} aria-hidden="true" /> Worship times</h3>
-                <ul className="location-detail-list">
-                  {modalItem.worshipTimes.map((time) => <li key={time}>{time}</li>)}
-                </ul>
-              </div>
-
-              <div className="location-detail-block">
-                <h3>Connect with the team</h3>
-                <ul className="location-contact-list">
-                  {modalItem.contacts.map((contact) => <li key={contact}>{contact}</li>)}
-                </ul>
-              </div>
-
-              {modalItem.pastors ? (
-                <div className="location-detail-block">
-                  <h3>Campus ministry team</h3>
-                  <div className="location-pastors">
-                    {modalItem.pastors.map((pastor, index) => (
-                      <div
-                        key={index}
-                        className="location-pastor"
+        {/* GRID */}
+        <div className="campus-grid">
+          {campuses.map((item, index) => (
+            <ScrollReveal key={item.id} className="location-card-reveal" delay={(index % 4) * 0.06}>
+              <article className="location-card">
+                <img
+                  className="location-card-image"
+                  src={item.campusImage}
+                  alt={item.cardTitle}
+                />
+                <div className="location-card-content">
+                  <p className="location-card-title">
+                    {item.cardTitle}
+                  </p>
+                  
+                  {/* Location is now ABOVE the buttons */}
+                  <div className="location-card-footer">
+                    <span className="location-card-address">
+                      <MapPin size={15} aria-hidden="true" /> {item.address}
+                    </span>
+                    <div className="location-card-actions">
+                      {/* View button now always displays */}
+                      <button
+                        onClick={() => {
+                          if (item.mapsUrl) {
+                            window.open(item.mapsUrl, "_blank");
+                          } else {
+                            alert("Directions not available for this location.");
+                          }
+                        }}
+                        className="location-card-button"
+                        type="button"
                       >
-                        <img
-                          src={pastor.image}
-                          alt={pastor.name}
-                        />
-                        <span>{pastor.name}</span>
-                      </div>
-                    ))}
+                        <FaMapMarkerAlt aria-hidden="true" /> View
+                      </button>
+                      
+                      <button
+                        onClick={() => openMore(item)}
+                        className="location-card-button location-card-button-primary"
+                        type="button"
+                      >
+                        More
+                      </button>
+                    </div>
                   </div>
                 </div>
-              ) : (
-                <div className="location-detail-block">
-                  <h3>Campus pastor</h3>
-                  <div className="location-pastor">
-                    <img
-                      src={modalItem.pastorImage}
-                      alt={modalItem.pastorName}
-                    />
-                    <span>{modalItem.pastorName}</span>
-                  </div>
-                </div>
-              )}
+              </article>
+            </ScrollReveal>
+          ))}
+        </div>
 
-              {!modalItem.hideMap && (
+        {/* MODAL */}
+        {openModal && modalItem && (
+          <div
+            onClick={closeModal}
+            className="locations-modal-backdrop"
+            role="presentation"
+          >
+            <div
+              onClick={(event) => event.stopPropagation()}
+              className="modal-container"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="location-modal-title"
+            >
+              <button
+                onClick={closeModal}
+                className="modal-close"
+                aria-label="Close location details"
+              >
+                <X size={20} aria-hidden="true" />
+              </button>
+
+              <div className="modal-left">
+                <span className="theme-eyebrow">Mahima Church location</span>
+                <h2 id="location-modal-title">{modalItem.cardTitle}</h2>
+                <p className="location-modal-address"><MapPin size={17} aria-hidden="true" /> {modalItem.address}</p>
+
+                <div className="location-detail-block">
+                  <h3><Clock3 size={18} aria-hidden="true" /> Worship times</h3>
+                  <ul className="location-detail-list">
+                    {modalItem.worshipTimes.map((time) => <li key={time}>{time}</li>)}
+                  </ul>
+                </div>
+
+                <div className="location-detail-block">
+                  <h3>Connect with the team</h3>
+                  <ul className="location-contact-list">
+                    {modalItem.contacts.map((contact) => <li key={contact}>{contact}</li>)}
+                  </ul>
+                </div>
+
+                {modalItem.pastors ? (
+                  <div className="location-detail-block">
+                    <h3>Campus ministry team</h3>
+                    <div className="location-pastors">
+                      {modalItem.pastors.map((pastor, index) => (
+                        <div
+                          key={index}
+                          className="location-pastor"
+                        >
+                          <img
+                            src={pastor.image}
+                            alt={pastor.name}
+                          />
+                          <span>{pastor.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="location-detail-block">
+                    <h3>Campus pastor</h3>
+                    <div className="location-pastor">
+                      <img
+                        src={modalItem.pastorImage}
+                        alt={modalItem.pastorName}
+                      />
+                      <span>{modalItem.pastorName}</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Directions button now always displays */}
                 <a
                   className="location-directions-button"
-                  href={modalItem.mapsUrl}
-                  target="_blank"
+                  href={modalItem.mapsUrl || "#"}
+                  target={modalItem.mapsUrl ? "_blank" : "_self"}
                   rel="noopener noreferrer"
+                  onClick={(e) => {
+                    if (!modalItem.mapsUrl) {
+                      e.preventDefault();
+                      alert("Directions are currently unavailable for this location.");
+                    }
+                  }}
                 >
                   <Navigation size={17} aria-hidden="true" /> Get directions
                 </a>
-              )}
-            </div>
+              </div>
 
-            <div className="modal-right">
-              <img
-                src={modalItem.campusImage}
-                alt={modalItem.cardTitle}
-              />
-              <div className="location-image-caption">
-                <span className="theme-eyebrow">A place to belong</span>
-                <p>{modalItem.title}</p>
+              <div className="modal-right">
+                <img
+                  src={modalItem.campusImage}
+                  alt={modalItem.cardTitle}
+                />
+                <div className="location-image-caption">
+                  <span className="theme-eyebrow">A place to belong</span>
+                  <p>{modalItem.title}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }
 
