@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./OurStory.css";
-// import ScrollReveal from "../ScrollReveal"; // kept for reference; replaced by RevealOnScroll below
 
 /* =====================================================================
    Direction-aware scroll reveal (fires scrolling DOWN and UP; re-triggers)

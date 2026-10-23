@@ -95,7 +95,6 @@
 
 
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 
 import img1 from "../../images/image1.jpg";
 import img2 from "../../images/image2.jpg";
@@ -277,14 +276,7 @@ const Hero = () => {
     textShadow: "2px 2px 20px rgba(0,0,0,0.8)"
   };
 
-  const btnStyle = {
-    marginTop: "20px",
-    padding: "12px 28px",
-    fontSize: "1rem",
-    fontWeight: 600,
-    borderRadius: "30px",
-    border: "none"
-  };
+
 
   return (
     <header
