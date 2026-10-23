@@ -1,7 +1,6 @@
 // import React from "react";
 // import { Container, Row, Col, Card } from "react-bootstrap";
 // import { Link } from "react-router-dom";
-// import ScrollReveal from "../ScrollReveal";
 
 // function QuickLinks() {
 //   return (
@@ -99,7 +98,6 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ScrollReveal from "../ScrollReveal";
 import { HandHeart, PlayCircle, Newspaper, MessageCircle } from "lucide-react";
 
 /* Map icons to each card title (kept separate so your data array is untouched) */

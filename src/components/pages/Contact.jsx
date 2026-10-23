@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { ArrowRight, Clock3, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import ScrollReveal from "../ScrollReveal";
 
 /* =====================================================================
    Direction-aware scroll reveal (fires scrolling DOWN and UP; re-triggers)

@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import givingImage from "../../images/image9.jpg";
 import givingQrCode from "../../images/qrcode1.png";
-import ScrollReveal from "../ScrollReveal";
 import { 
   User, 
   CreditCard, 

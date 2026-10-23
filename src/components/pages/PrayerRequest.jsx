@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { ArrowRight, HeartHandshake, LockKeyhole, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
-import ScrollReveal from "../ScrollReveal";
 import "./PrayerRequest.css";
 
 /* =====================================================================
