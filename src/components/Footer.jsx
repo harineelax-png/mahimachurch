@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, MapPin } from "lucide-react";
+import { MapPin, Instagram, Facebook, Youtube } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "../images/logo4.png";
 import ScrollReveal from "./ScrollReveal";
@@ -12,6 +12,13 @@ const footerLinks = [
   // { label: "News & updates", to: "/news" },
   // { label: "Contact", to: "/contact" },
   // { label: "Watch online", to: "/watch-online" },
+];
+
+// 🔧 Replace these URLs with your actual social profiles
+const socialLinks = [
+  { label: "Instagram", href: "https://instagram.com/", Icon: Instagram },
+  { label: "Facebook",  href: "https://facebook.com/",  Icon: Facebook  },
+  { label: "YouTube",   href: "https://youtube.com/",   Icon: Youtube   },
 ];
 
 function Footer() {
@@ -27,12 +34,21 @@ function Footer() {
             </span>
           </Link>
           <p>Sharing the love of Christ with the whole world.</p>
-          <Link
-            className="site-footer-social"
-            to="/watch-online"
-          >
-            Watch Mahima Swaramu here <ArrowRight size={16} aria-hidden="true" />
-          </Link>
+
+          <div className="site-footer-socials">
+            {socialLinks.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="site-footer-social"
+                aria-label={label}
+              >
+                <Icon size={18} aria-hidden="true" />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="site-footer-links">
