@@ -5,6 +5,14 @@ import pastorDevaraju from "../../images/image27.jpg";
 import pastorVinay from "../../images/vinay.jpg";
 import pastorGurvaya from "../../images/gurvaya1.jpg";
 
+// Leadership & Pastoral Team Images
+import imgSangeethamma from "../../images/sangeetha.jpeg"; // <-- Updated path here
+import imgJohnBabu from "../../images/John babu.jpeg";
+import imgCephas from "../../images/Cephas.jpeg";
+// TODO: Update these file paths to match your actual image names for Ruthu and Ramesh
+import imgRuthu from "../../images/Ruthu.jpeg"; 
+import imgRamesh from "../../images/Ramesh.jpeg";
+
 /* =====================================================================
    Direction-aware scroll reveal (fires scrolling DOWN and UP; re-triggers)
    ===================================================================== */
@@ -85,6 +93,69 @@ const leadershipAnimations = `
   /* Team card 3D tilt polish */
   .leadership-person-card {
     will-change: transform;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* New Pill Heading Style matching the image */
+  .team-pill-heading {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 24px;
+    background: #f3f4f6;
+    border-radius: 999px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: #1e2433;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  
+  .team-pill-heading::before,
+  .team-pill-heading::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #f59e0b;
+    border-radius: 50%;
+  }
+
+  /* MODIFIED: Rounded Rectangle Image Shape */
+  .leadership-circle-img {
+    width: 180px;
+    height: 220px; /* Made taller for a portrait look */
+    margin: 0 auto 20px;
+    border-radius: 20px; /* Changed from 50% to rounded rectangle */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(27, 39, 62, 0.12);
+    background: #f8fafc;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  }
+
+  .leadership-circle-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .leadership-person-card:hover .leadership-circle-img {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(27, 39, 62, 0.18);
+  }
+
+  .leadership-name {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e2433;
+    text-align: center;
+    line-height: 1.4;
+    margin: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -94,13 +165,32 @@ const leadershipAnimations = `
       transform: none !important;
       transition: none !important;
     }
+    .leadership-person-card:hover .leadership-circle-img {
+      transform: none !important;
+    }
   }
 `;
 
+// --- ORIGINAL CAMPUS LEADERS ---
 const campusLeaders = [
   { name: "Bro. Devaraju", image: pastorDevaraju },
   { name: "Bro. Vinay", image: pastorVinay },
   { name: "Bro. Gurvaya", image: pastorGurvaya },
+];
+
+// --- UPDATED LEADERSHIP TEAM ---
+const leadershipTeam = [
+  { name: "Potluri Ruthu\nRatnam Garu", image: imgRuthu },
+  { name: "Potluri Ramesh\nKumar Garu", image: imgRamesh },
+  { name: "Potluri\nSangeethamma", image: imgSangeethamma },
+];
+
+// --- UPDATED PASTORAL TEAM ---
+const pastoralTeam = [
+  { name: "Pastor John Babu", image: imgJohnBabu },
+  { name: "Pastor Devaraju", image: pastorDevaraju },
+  { name: "Pastor Cephas", image: imgCephas },
+  { name: "Pastor Vinay", image: pastorVinay },
 ];
 
 const leadershipValues = [
@@ -204,6 +294,59 @@ function Leadership() {
           </div>
         </section>
 
+        {/* ================= LEADERSHIP TEAM SECTION ================= */}
+        <section className="leadership-team" style={{ textAlign: "center" }}>
+          <RevealOnScroll delay={0}>
+            <div className="team-pill-heading">Leadership</div>
+          </RevealOnScroll>
+          <div className="leadership-team-grid" style={{ justifyContent: "center" }}>
+            {leadershipTeam.map(({ name, image }, idx) => (
+              <RevealOnScroll key={name} delay={idx * 0.12}>
+                <article
+                  className="leadership-person-card"
+                  onMouseMove={handleCardMove}
+                  onMouseLeave={handleCardLeave}
+                  style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+                >
+                  <div className="leadership-circle-img">
+                    <img src={image} alt={name} loading="lazy" />
+                  </div>
+                  <h3 className="leadership-name">
+                    {name.split('\n').map((line, i) => (
+                      <span key={i}>{line}<br/></span>
+                    ))}
+                  </h3>
+                </article>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </section>
+
+        {/* ================= PASTORAL TEAM SECTION ================= */}
+        <section className="leadership-team" style={{ textAlign: "center" }}>
+          <RevealOnScroll delay={0}>
+            <div className="team-pill-heading">Pastoral Team</div>
+          </RevealOnScroll>
+          <div className="leadership-team-grid" style={{ justifyContent: "center" }}>
+            {pastoralTeam.map(({ name, image }, idx) => (
+              <RevealOnScroll key={name} delay={idx * 0.12}>
+                <article
+                  className="leadership-person-card"
+                  onMouseMove={handleCardMove}
+                  onMouseLeave={handleCardLeave}
+                  style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+                >
+                  <div className="leadership-circle-img">
+                    <img src={image} alt={name} loading="lazy" />
+                  </div>
+                  <h3 className="leadership-name">{name}</h3>
+                </article>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </section>
+
+        {/* ================= KANCHIKACHERLA CAMPUS TEAM (Original) ================= */}
         <section className="leadership-team">
           <RevealOnScroll delay={0}>
             <div className="leadership-section-heading">
