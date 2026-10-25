@@ -343,19 +343,13 @@ function Sundays() {
         style={{
           backgroundColor: "#f8eee6",
           minHeight: "100vh",
-          padding: "120px 20px",
+          padding: "24px 20px 60px",
           textAlign: "center",
         }}
       >
         {/* Title (Replaced "You belong here" with "Location") */}
         <h1
-          className="locations-title"
-          style={{
-            fontSize: "80px",
-            fontWeight: "400",
-            fontFamily: "Georgia, serif",
-            marginBottom: "30px",
-          }}
+          className="locations-title site-page-title"
         >
           Location
         </h1>

@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import givingImage from "../../images/image9.jpg";
 import givingQrCode from "../../images/qrcode1.png";
 import { 
   User, 
@@ -411,20 +410,14 @@ function Donate() {
     <>
       <style>{donateAnimations}</style>
       <main className="donate-page">
-        {/* ================= HERO SECTION (Original Preserved) ================= */}
-        <section
-          className="donate-hero"
-          style={{
-            backgroundImage: `linear-gradient(120deg, rgba(31, 79, 163, 0.72), rgba(158, 11, 34, 0.35)), url(${givingImage})`,
-          }}
-        >
-          <RevealOnScroll className="donate-hero-content">
-            <span className="theme-eyebrow">Give with a joyful heart</span>
-            <h1>GIFT</h1>
-            <p>“God loves a cheerful giver”</p>
-            <h3>2 Corinthians 9:7</h3>
-          </RevealOnScroll>
-        </section>
+        <header className="site-page-heading site-page-heading--compact">
+          <h1 className="site-page-title">GIFT</h1>
+          <p className="site-page-subtitle">Give with a joyful heart</p>
+          <blockquote className="site-page-quote">
+            “God loves a cheerful giver”
+            <cite>2 Corinthians 9:7</cite>
+          </blockquote>
+        </header>
 
         {/* ================= MESSAGE SECTION (Original Preserved) ================= */}
         <RevealOnScroll className="donate-message">

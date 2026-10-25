@@ -43,7 +43,7 @@ function Care() {
         style={{ backgroundImage: `url(${hero})` }}
       >
         <div className="hero-overlay">
-          <h1>Care & Support Ministries</h1>
+          <h1 className="site-page-title">Care & Support Ministries</h1>
 
           <button className="btn-primary">Find Support</button>
 

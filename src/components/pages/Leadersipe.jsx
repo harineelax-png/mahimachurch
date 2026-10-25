@@ -235,21 +235,10 @@ function Leadership() {
     <>
       <style>{leadershipAnimations}</style>
       <main className="leadership-page">
-        <RevealOnScroll delay={0}>
-          <section className="leadership-hero">
-            <div className="leadership-hero-inner">
-              <span className="theme-eyebrow">Faithful in service · United in purpose</span>
-              <h1>Leadership that serves with faith and love.</h1>
-              <p>
-                Mahima Church is built on a legacy of prayer, biblical teaching, and a heart to share the love of Christ.
-              </p>
-              <Link className="theme-button" to="/about/our-story">
-                Discover our story <ArrowRight size={17} aria-hidden="true" />
-              </Link>
-            </div>
-            <div className="leadership-hero-mark" aria-hidden="true">✝</div>
-          </section>
-        </RevealOnScroll>
+        <header className="site-page-heading site-page-heading--compact">
+          <h1 className="site-page-title">Leadership that serves with faith and love.</h1>
+          <p className="site-page-subtitle">Faithful in service · United in purpose</p>
+        </header>
 
         <RevealOnScroll delay={0.1}>
           <section className="leadership-story">

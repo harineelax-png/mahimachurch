@@ -2,43 +2,10 @@
 .beliefs-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 24px 20px 60px;
   font-family: "Inter", "Segoe UI", sans-serif;
   color: var(--brand-ink, #2c3e50);
   line-height: 1.7;
-}
-
-/* Hero */
-.beliefs-hero {
-  text-align: center;
-  margin-bottom: 80px;
-  padding: 20px 10px;
-  position: relative;
-}
-
-.beliefs-hero h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--brand-blue, #1f4fa3);
-  animation: beliefsTitleIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes beliefsTitleIn {
-  0%   { opacity: 0; transform: translateY(30px); letter-spacing: 10px; filter: blur(8px); }
-  100% { opacity: 1; transform: translateY(0); letter-spacing: 0; filter: blur(0); }
-}
-
-.beliefs-subtitle {
-  font-size: 1.25rem;
-  color: var(--brand-muted, #6b7280);
-  font-style: italic;
-  animation: beliefsSubIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
-}
-
-@keyframes beliefsSubIn {
-  0%   { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* Mission */
@@ -204,6 +171,23 @@
   letter-spacing: 0.3px;
 }
 
+.beliefs-container .pillar-card {
+  padding: 12px 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.beliefs-container .pillar-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.beliefs-container .pillar-card::before {
+  display: none;
+}
+
 /* Holistic */
 .beliefs-holistic {
   background-color: var(--brand-soft, #f9fafb);
@@ -272,10 +256,6 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .beliefs-hero h1 {
-    font-size: 2.2rem;
-  }
-
   .beliefs-mission,
   .beliefs-holistic {
     padding: 40px 20px;
@@ -287,8 +267,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .beliefs-hero h1,
-  .beliefs-subtitle,
   .beliefs-mission,
   .beliefs-mission::before,
   .pillar-card,

@@ -75,7 +75,7 @@ function Whattoexpect() {
         <div className="visit-hero-image" style={{ backgroundImage: `url(${img1})` }} />
         <ScrollReveal className="visit-hero-content">
           <span className="theme-eyebrow">A place to belong</span>
-          <h1>Welcome to Mahima Church.</h1>
+          <h1 className="site-page-title">Welcome to Mahima Church.</h1>
           <p>We’re glad you’re here. Come as you are, worship with us, and find a community where you can grow.</p>
           <Link to="/locations" className="theme-button">
             Find a location <ArrowRight size={17} aria-hidden="true" />

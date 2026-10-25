@@ -390,19 +390,10 @@ function COMEvents() {
   return (
     <>
       <style>{eventStyles}</style>
-      <div style={{ backgroundColor: "#f8eee6", minHeight: "100vh", padding: "60px 20px", textAlign: "center" }}>
+      <div style={{ backgroundColor: "#f8eee6", minHeight: "100vh", padding: "24px 20px 60px", textAlign: "center" }}>
         
         <RevealOnScroll>
-          <h1
-            style={{
-              fontSize: "80px",
-              fontWeight: "400",
-              fontFamily: "Georgia, serif",
-              marginBottom: "30px",
-              marginTop: "0",
-              color: "var(--brand-ink, #1e2433)"
-            }}
-          >
+          <h1 className="site-page-title" style={{ color: "var(--brand-ink, #1e2433)" }}>
             Events
           </h1>
         </RevealOnScroll>

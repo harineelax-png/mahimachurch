@@ -277,7 +277,7 @@ const About = () => {
     <>
       <style>{aboutAnimations}</style>
       <AboutContainer className="about-page">
-        <Title>About Us</Title>
+        <Title className="site-page-title">About Us</Title>
 
         <Grid>
           {/* Card 1 */}

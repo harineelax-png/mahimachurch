@@ -425,19 +425,10 @@ function News() {
     <>
       <style>{newsAnimations}</style>
       <main className="news-page">
-        <section className="news-hero">
-          <RevealOnScroll className="news-hero-content">
-            <span className="theme-eyebrow">Life at Mahima Church</span>
-            <h1>News, gatherings &amp; ways to connect.</h1>
-            <p>Stay connected with worship, prayer, and what’s happening across our church family.</p>
-            <Link to="/events" className="theme-button">
-              View the events calendar <ArrowRight size={17} aria-hidden="true" />
-            </Link>
-          </RevealOnScroll>
-          <div className="news-hero-decoration" aria-hidden="true">
-            <span>Faith</span><i>·</i><span>Hope</span><i>·</i><span>Love</span>
-          </div>
-        </section>
+        <header className="site-page-heading site-page-heading--compact">
+          <h1 className="site-page-title">News, gatherings &amp; ways to connect.</h1>
+          <p className="site-page-subtitle">Life at Mahima Church</p>
+        </header>
 
         <section className="news-content">
           <RevealOnScroll className="news-section-heading">

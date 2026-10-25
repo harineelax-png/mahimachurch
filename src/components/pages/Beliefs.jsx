@@ -120,18 +120,15 @@ import ScrollReveal from "../ScrollReveal";
 
 function Beliefs() {
   return (
-    <div className="beliefs-container">
-
-      {/* Hero */}
-      <ScrollReveal className="beliefs-reveal">
-      <section className="beliefs-hero">
-        <h1>Our Beliefs & Core Values</h1>
-        <p className="beliefs-subtitle">
+    <>
+      <header className="site-page-heading site-page-heading--compact">
+        <h1 className="site-page-title">Our Beliefs & Core Values</h1>
+        <p className="site-page-subtitle">
           Rooted in Biblical Truth. Driven by the Love of Christ.
         </p>
-      </section>
-      </ScrollReveal>
+      </header>
 
+      <div className="beliefs-container">
       {/* Mission */}
       <ScrollReveal className="beliefs-reveal">
       <section className="beliefs-mission">
@@ -247,7 +244,8 @@ function Beliefs() {
       </section>
       </ScrollReveal>
 
-    </div>
+      </div>
+    </>
   );
 }
 

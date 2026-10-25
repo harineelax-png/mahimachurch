@@ -54,20 +54,16 @@ const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
 function OurStory() {
   return (
     <div className="ourstory-container">
-      
-      {/* Hero Section */}
-      <RevealOnScroll className="ourstory-reveal" delay={0}>
-      <section className="ourstory-hero">
-        <h1>Our Story</h1>
-        <p className="ourstory-tagline">
+      <header className="site-page-heading site-page-heading--compact">
+        <h1 className="site-page-title">Our Story</h1>
+        <p className="site-page-subtitle">
           A Vision Given by Christ. A Journey of Faith. A Legacy of Grace.
         </p>
-      </section>
-      </RevealOnScroll>
+      </header>
 
       {/* Intro */}
       <RevealOnScroll className="ourstory-reveal" delay={0}>
-      <section className="ourstory-section">
+      <section className="ourstory-section story-intro">
         <p className="ourstory-text">
           The story of <strong>Mahima Church</strong> is a testimony to the faithfulness of God and the obedience of one servant who dared to respond to a divine calling.
         </p>
@@ -232,9 +228,10 @@ function OurStory() {
       </RevealOnScroll>
 
       {/* Today Section */}
-      <RevealOnScroll className="ourstory-reveal" delay={0.1}>
+      <RevealOnScroll className="ourstory-reveal" delay={0}>
       <section className="ourstory-section highlight">
-        <h2>Today: A Growing Family of Faith</h2>
+        <p className="today-attribution">Mahima Good Samaritan's</p>
+        <h2 className="today-heading">Today: A Growing Family of Faith</h2>
         <p className="ourstory-text">
           By the grace of God, what began as a small step of obedience by a woman—with just four people—has today grown into:
         </p>

@@ -90,7 +90,7 @@ function PrayerRequest() {
       <section className="prayer-hero">
         <RevealOnScroll className="prayer-hero-content">
           <span className="theme-eyebrow">You are not alone</span>
-          <h1>How can we pray for you?</h1>
+          <h1 className="site-page-title">How can we pray for you?</h1>
           <p>
             Whatever you’re carrying, you’re welcome to share it with us. Our prayer team is here to stand with you.
           </p>

@@ -241,14 +241,11 @@ function Contact() {
   return (
     <>
       <style>{contactAnimations}</style>
-      <main className="contact-page" style={{ backgroundColor: "#f8eee6", minHeight: "100vh", padding: "60px 20px", textAlign: "center" }}>
-        
-        {/* Moved to top and removed the "Contact" / "Find a contact" hero section */}
-        <RevealOnScroll className="news-section-heading" style={{ textAlign: "center", margin: "0 auto 40px" }}>
-          <h2 style={{ fontSize: "3rem", fontFamily: "Georgia, serif", color: "var(--brand-ink, #1e2433)" }}>Contact your nearest campus</h2>
-          <p>Call a campus contact for local information and service details.</p>
-        </RevealOnScroll>
+      <header className="site-page-heading site-page-heading--compact">
+        <h1 className="site-page-title">Contact your nearest campus</h1>
+      </header>
 
+      <main className="contact-page" style={{ backgroundColor: "#f8eee6", minHeight: "100vh", padding: "0 20px 60px", textAlign: "center" }}>
         <section className="contact-content" id="campus-contacts">
           <div className="contact-campus-grid">
             {campuses.map((campus, index) => (
