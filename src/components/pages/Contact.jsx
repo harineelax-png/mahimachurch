@@ -241,26 +241,15 @@ function Contact() {
   return (
     <>
       <style>{contactAnimations}</style>
-      <main className="contact-page">
-        <section className="contact-hero">
-          <RevealOnScroll className="contact-hero-content">
-            <span className="theme-eyebrow">We’d love to hear from you</span>
-            <h1>Let’s get connected.</h1>
-            <p>Questions about visiting, service times, or finding a church family? Reach out to a campus team.</p>
-            <a className="theme-button" href="#campus-contacts">
-              Find a contact <ArrowRight size={17} aria-hidden="true" />
-            </a>
-          </RevealOnScroll>
-          <span className="contact-hero-mark" aria-hidden="true"><Phone size={154} /></span>
-        </section>
+      <main className="contact-page" style={{ backgroundColor: "#f8eee6", minHeight: "100vh", padding: "60px 20px", textAlign: "center" }}>
+        
+        {/* Moved to top and removed the "Contact" / "Find a contact" hero section */}
+        <RevealOnScroll className="news-section-heading" style={{ textAlign: "center", margin: "0 auto 40px" }}>
+          <h2 style={{ fontSize: "3rem", fontFamily: "Georgia, serif", color: "var(--brand-ink, #1e2433)" }}>Contact your nearest campus</h2>
+          <p>Call a campus contact for local information and service details.</p>
+        </RevealOnScroll>
 
         <section className="contact-content" id="campus-contacts">
-          <RevealOnScroll className="news-section-heading">
-            <span className="theme-eyebrow">Local church family</span>
-            <h2>Contact your nearest campus</h2>
-            <p>Call a campus contact for local information and service details.</p>
-          </RevealOnScroll>
-
           <div className="contact-campus-grid">
             {campuses.map((campus, index) => (
               <RevealOnScroll key={campus.name} delay={(index % 3) * 0.07}>
@@ -295,7 +284,7 @@ function Contact() {
           </div>
         </section>
 
-        <RevealOnScroll className="contact-prayer-callout">
+        <RevealOnScroll className="contact-prayer-callout" style={{ marginTop: "60px" }}>
           <div>
             <span className="theme-eyebrow">Need prayer?</span>
             <h2>Our prayer team would be glad to pray with you.</h2>

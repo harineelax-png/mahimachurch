@@ -86,7 +86,7 @@
 
 import React, { useState } from "react";
 import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // IMPORT YOUR LOGO
 import logo from "../images/logo4.png";  // <-- update path if needed
@@ -94,7 +94,6 @@ import logo from "../images/logo4.png";  // <-- update path if needed
 const CustomNavbar = () => {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const navigate = useNavigate();
 
   return (
     <Navbar
@@ -123,20 +122,12 @@ const CustomNavbar = () => {
 
             <NavDropdown
               id="about-dropdown"
-              title={
-                <span
-                  onClick={() => navigate("/about")}
-                  style={{ cursor: "pointer" }}
-                >
-                  About
-                </span>
-              }
+              title="About"
               show={aboutOpen}
               onToggle={setAboutOpen}
             >
               <NavDropdown.Item as={Link} to="/about/our-story" onClick={() => setExpanded(false)}>Our Story</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/about/leadership" onClick={() => setExpanded(false)}>Leadership</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/about/mission" onClick={() => setExpanded(false)}>Mission</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/about/beliefs" onClick={() => setExpanded(false)}>Beliefs</NavDropdown.Item>
             </NavDropdown>
 

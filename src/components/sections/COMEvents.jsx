@@ -104,6 +104,7 @@ const eventStyles = `
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 30px;
+    text-align: left;
   }
 
   /* ============================================================
@@ -389,45 +390,63 @@ function COMEvents() {
   return (
     <>
       <style>{eventStyles}</style>
-      <div className="custom-events-container">
-        <div className="custom-events-grid">
-          {events2026.map((event, index) => {
-            const eventDateStr = event.start || event.date;
-            const { day, month, fullString } = parseDate(eventDateStr);
-            const timeString = extractTime(event.description);
+      <div style={{ backgroundColor: "#f8eee6", minHeight: "100vh", padding: "60px 20px", textAlign: "center" }}>
+        
+        <RevealOnScroll>
+          <h1
+            style={{
+              fontSize: "80px",
+              fontWeight: "400",
+              fontFamily: "Georgia, serif",
+              marginBottom: "30px",
+              marginTop: "0",
+              color: "var(--brand-ink, #1e2433)"
+            }}
+          >
+            Events
+          </h1>
+        </RevealOnScroll>
 
-            // Using a fallback image just in case one is missing
-            const displayImage = event.imageUrl || imag1;
+        <div className="custom-events-container" style={{ paddingTop: "20px" }}>
+          <div className="custom-events-grid">
+            {events2026.map((event, index) => {
+              const eventDateStr = event.start || event.date;
+              const { day, month, fullString } = parseDate(eventDateStr);
+              const timeString = extractTime(event.description);
 
-            return (
-              <RevealOnScroll key={index} delay={(index % 3) * 0.1}>
-                <div className="custom-event-card">
-                  <div className="event-image-wrapper">
-                    <img src={displayImage} alt={event.title} />
-                    
-                    {/* White Date Badge */}
-                    <div className="event-date-badge">
-                      <span className="day">{day}</span>
-                      <span className="month">{month}</span>
+              // Using a fallback image just in case one is missing
+              const displayImage = event.imageUrl || imag1;
+
+              return (
+                <RevealOnScroll key={index} delay={(index % 3) * 0.1}>
+                  <div className="custom-event-card">
+                    <div className="event-image-wrapper">
+                      <img src={displayImage} alt={event.title} />
+                      
+                      {/* White Date Badge */}
+                      <div className="event-date-badge">
+                        <span className="day">{day}</span>
+                        <span className="month">{month}</span>
+                      </div>
+                    </div>
+
+                    <div className="event-card-content">
+                      <div className="event-meta">
+                        <CalendarDays size={16} />
+                        <span>{fullString}{timeString}</span>
+                      </div>
+
+                      <h3 className="event-title">{event.title}</h3>
+                      
+                      {event.description && (
+                        <p className="event-description">{event.description}</p>
+                      )}
                     </div>
                   </div>
-
-                  <div className="event-card-content">
-                    <div className="event-meta">
-                      <CalendarDays size={16} />
-                      <span>{fullString}{timeString}</span>
-                    </div>
-
-                    <h3 className="event-title">{event.title}</h3>
-                    
-                    {event.description && (
-                      <p className="event-description">{event.description}</p>
-                    )}
-                  </div>
-                </div>
-              </RevealOnScroll>
-            );
-          })}
+                </RevealOnScroll>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>

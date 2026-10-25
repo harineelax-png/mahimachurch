@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 // import Hero from "./components/sections/Hero";
 import About from "./components/pages/About";
@@ -23,9 +23,20 @@ import Footer from "./components/Footer";
 import News from "./components/pages/News";
 import Contact from "./components/pages/Contact";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
 
       {/* Add space below navbar */}

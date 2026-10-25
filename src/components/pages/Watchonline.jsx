@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { Play, Radio, Video } from "lucide-react";
 import ScrollReveal from "../ScrollReveal";
 
 const channelId = "UCet_qeJAbTvbjC5B_VrAtmA";
@@ -38,14 +37,6 @@ function VideoSection() {
 
   return (
     <main className="watch-page">
-      <section className="watch-hero">
-        <ScrollReveal className="watch-hero-content">
-          <span className="theme-eyebrow">Mahima Church · Watch Online</span>
-          <h1>Worship with us, wherever you are.</h1>
-          <p>Messages, worship, and live services from the Mahima Swaramu channel—playing right here.</p>
-        </ScrollReveal>
-      </section>
-
       <section className="watch-content" aria-labelledby="watch-title">
         <ScrollReveal className="watch-heading">
           <div>
@@ -60,7 +51,7 @@ function VideoSection() {
               onClick={() => setView("live")}
               aria-pressed={view === "live"}
             >
-              <Radio size={17} aria-hidden="true" /> Live stream
+              Live stream
             </button>
             <button
               type="button"
@@ -68,7 +59,7 @@ function VideoSection() {
               onClick={() => setView("latest")}
               aria-pressed={view === "latest"}
             >
-              <Video size={17} aria-hidden="true" /> Latest messages
+              Latest messages
             </button>
           </div>
         </ScrollReveal>
@@ -114,7 +105,6 @@ function VideoSection() {
                     alt=""
                     loading="lazy"
                   />
-                  <span className="watch-video-play"><Play size={18} fill="currentColor" aria-hidden="true" /></span>
                 </span>
                 <span className="watch-video-title">{video.title}</span>
                 <span className="watch-video-channel">Mahima Swaramu</span>

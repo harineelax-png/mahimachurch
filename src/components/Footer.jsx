@@ -7,6 +7,7 @@ import ScrollReveal from "./ScrollReveal";
 const footerLinks = [
   { label: "Our story", to: "/about/our-story" },
   { label: "Leadership", to: "/about/leadership" },
+  { label: "Mission", to: "/about/mission" },
   { label: "Locations", to: "/locations" },
   { label: "Prayer request", to: "/prayer" },
   // { label: "News & updates", to: "/news" },

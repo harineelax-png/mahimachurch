@@ -347,7 +347,7 @@ function Sundays() {
           textAlign: "center",
         }}
       >
-        {/* Title */}
+        {/* Title (Replaced "You belong here" with "Location") */}
         <h1
           className="locations-title"
           style={{
@@ -357,45 +357,8 @@ function Sundays() {
             marginBottom: "30px",
           }}
         >
-          You belong here
+          Location
         </h1>
-
-        {/* Subtitle */}
-        <p
-          style={{
-            maxWidth: "700px",
-            margin: "0 auto",
-            fontSize: "20px",
-            lineHeight: "1.6",
-            color: "#333",
-          }}
-        >
-          Visiting for the first time can be overwhelming, but it doesn’t have to
-          be! Whether you're checking things out or looking for a place to call
-          home, you belong here.
-        </p>
-
-        {/* Header Row */}
-        <div
-          style={{
-            marginTop: "150px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            maxWidth: "900px",
-            margin: "150px auto 0 auto",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "36px",
-              fontFamily: "Georgia, serif",
-              fontWeight: "500",
-            }}
-          >
-            Locations
-          </h2>
-        </div>
 
         {/* GRID */}
         <div className="campus-grid">

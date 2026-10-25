@@ -186,7 +186,6 @@ const Hero = () => {
         <span className="hero-divider" aria-hidden="true" />
       </div>
 
-      <span className="hero-scroll-indicator" aria-hidden="true" />
     </header>
   );
 };

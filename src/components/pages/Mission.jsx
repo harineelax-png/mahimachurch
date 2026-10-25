@@ -184,7 +184,6 @@
 // }
 
 // export default Mission;
-
 import React, { useRef, useState, useEffect } from "react";
 
 // TOP SLIDER IMAGES
@@ -266,7 +265,7 @@ const missionAnimations = `
 
   .mission-title { animation: missionTitleIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
 
-  /* ============ DIRECTION-AWARE 3D FLIP + BLUR REVEAL ============ */
+  /* ============ DIRECTION-AWARE 3D FLIP + BLUR REVEAL (For Images) ============ */
   .reveal-item {
     opacity: 0;
     filter: blur(10px);
@@ -293,6 +292,19 @@ const missionAnimations = `
     transform: perspective(1200px) translateY(0) rotateX(0) scale(1);
   }
 
+  /* ============ BANNER TEXT REVEAL (Smooth slide up without 3D tilt) ============ */
+  .reveal-item.banner-text {
+    transform: translateY(45px) scale(0.96) !important;
+    filter: blur(10px);
+  }
+  .reveal-item.banner-text.from-up {
+    transform: translateY(-45px) scale(0.96) !important;
+  }
+  .reveal-item.banner-text.is-visible {
+    transform: translateY(0) scale(1) !important;
+    filter: blur(0);
+  }
+
   .mission-bottom-slider {
     box-shadow: var(--brand-shadow);
   }
@@ -311,7 +323,8 @@ const missionAnimations = `
 
   @media (prefers-reduced-motion: reduce) {
     .mission-title,
-    .reveal-item {
+    .reveal-item,
+    .reveal-item.banner-text {
       animation: none !important;
       transition: none !important;
       opacity: 1 !important;
@@ -423,9 +436,9 @@ function Mission() {
           paddingBottom: "0rem", // reduced bottom space
         }}
       >
-        {/* ---------------- TITLE ---------------- */}
+        {/* ---------------- TITLE (Now using banner-text animation) ---------------- */}
         <div style={{ textAlign: "center", padding: "0 20px" }}>
-          <RevealOnScroll delay={0.05}>
+          <RevealOnScroll delay={0.05} className="banner-text">
             <h2
               className="mission-heading"
               style={{
@@ -439,7 +452,7 @@ function Mission() {
             </h2>
           </RevealOnScroll>
 
-          <RevealOnScroll delay={0.20}>
+          <RevealOnScroll delay={0.20} className="banner-text">
             <p
               className="mission-sub"
               style={{
@@ -457,7 +470,7 @@ function Mission() {
           </RevealOnScroll>
         </div>
 
-        {/* ---------------- BOTTOM AUTO SLIDER ---------------- */}
+        {/* ---------------- BOTTOM AUTO SLIDER (Keeps the 3D flip animation) ---------------- */}
         <RevealOnScroll delay={0.35}>
           <div
             className="mission-bottom-slider"
