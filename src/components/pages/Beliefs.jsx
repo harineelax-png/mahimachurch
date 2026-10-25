@@ -138,7 +138,17 @@ function Beliefs() {
         <div className="mission-content">
           <h2>Our Mission</h2>
           <p className="mission-statement">
-            “To reach the unreached and share the love of Christ with one and all.”
+            In the Service of God and in the Service of Nation !!!
+          </p>
+          <p className="mission-note">
+            In the Service of God - by preaching the Gospel of Jesus Christ,
+            reaching the lost and transforming lives through the power of God’s
+            Word and Spirit.
+          </p>
+          <p className="mission-note">
+            In the Service of Nation - by being the Body of Christ, serving the
+            needy, healing the broken, and bringing hope through acts of love,
+            mercy, and kindness.
           </p>
 
           <ul className="mission-list">

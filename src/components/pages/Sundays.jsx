@@ -202,8 +202,8 @@ function Sundays() {
       pastorName: "Pastor Bose",
       pastorImage: pastorPrasadam,
       worshipTimes: [
-        "Sunday Worship: 8:30 AM – 10:30 AM",
-        "Friday Healing Prayers: 5 PM – 7 PM",
+        "Every Sunday Praise & Worship Service: 8:30 AM to 10:30 AM",
+        "Every Friday Healing Prayers: 5 PM to 7 PM",
       ],
       contacts: [
         "Bro. Devaraju – +91 87123 90777",
@@ -220,7 +220,7 @@ function Sundays() {
       campusImage: imag2,
       pastorName: "Pastor Bose",
       pastorImage: pastorCurrency,
-      worshipTimes: ["Sunday Worship: 10:30 AM – 12:30 PM"],
+      worshipTimes: ["Every Sunday Praise & Worship Service: 10:30 AM to 12:30 PM"],
       contacts: [
         "Pastor Bose – +91 70362 57777",
         "Sis. Sumadhuramma – +91 97016 96395",
@@ -237,12 +237,12 @@ function Sundays() {
       pastorName: "Pastor Peter",
       pastorImage: pastorThullur,
       worshipTimes: [
-        "Sunday Worship: 10 AM – 12 PM",
-        "Friday Healing Prayers: 6 PM – 9 PM",
+        "Every Sunday Praise & Worship Service: 10 AM to 12 PM",
+        "Every Friday Healing Prayers: 6 PM to 9 PM",
       ],
       contacts: [
         "Sis. Sailamma – +91 94916 66738",
-        "Sis. Sulochanamma – +91 89198 30802",
+        "Sis. Sulochanamma – +91 891-9830802",
       ],
     },
     {
@@ -256,8 +256,8 @@ function Sundays() {
       pastorName: "Pastor Peter",
       pastorImage: pastorMandhadum,
       worshipTimes: [
-        "Sunday Worship: 8 AM – 10 AM",
-        "Friday Healing Prayers: 3 PM – 6 PM",
+        "Every Sunday Praise & Worship Service: 8:00 AM to 10:00 AM",
+        "Every Friday Healing Prayers: 3 PM to 6 PM",
       ],
       contacts: [
         "Bro. Niranjan – +91 95814 94946",
@@ -275,8 +275,8 @@ function Sundays() {
       pastorName: "Sis. Jyothamma",
       pastorImage: pastorKondapur,
       worshipTimes: [
-        "Sunday Worship: 10 AM – 12 PM",
-        "Friday Healing Prayers: 6 PM – 8 PM",
+        "Every Sunday Praise & Worship Service: 10 AM to 12 PM",
+        "Every Friday Healing Prayers: 6 PM to 8 PM",
       ],
       contacts: [
         "Sis. Jyothamma – +91 88867 38515",
@@ -293,8 +293,8 @@ function Sundays() {
       pastorName: "Pastor Yehoshuva",
       pastorImage: pastorDachepalli,
       worshipTimes: [
-        "Sunday Worship: 10 AM – 12 PM",
-        "Friday Healing Prayers: 6 PM – 9 PM",
+        "Every Sunday Praise & Worship Service: 10 AM to 12 PM",
+        "Every Friday Healing Prayers: 6 PM to 9 PM",
       ],
       contacts: [
         "Pastor Yehoshuva – +91 97056 44966",
@@ -316,10 +316,10 @@ function Sundays() {
       ],
       pastorName: "Bro. Devaraju",
       pastorImage: pastorKanchik,
-      worshipTimes: ["Sunday Worship: 4 PM – 6 PM"],
+      worshipTimes: ["Every Sunday Praise & Worship Service: 4 PM to 6 PM"],
       contacts: [
         "Bro. Devaraju – +91 87123 90777",
-        "Bro. Cephas – +91 83095 09297",
+        "Bro. Cephas – +91 8309-509297",
       ],
       hideMap: true, // Kept from your original code
     },

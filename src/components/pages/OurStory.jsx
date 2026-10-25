@@ -190,10 +190,54 @@ function OurStory() {
       </section>
       </RevealOnScroll>
 
+      {/* Holistic Ministry */}
+      <RevealOnScroll className="ourstory-reveal" delay={0.05}>
+      <section className="ourstory-section">
+        <h2>HOLISTIC MINISTRY: CARING FOR BODY, SOUL &amp; SPIRIT</h2>
+        <p className="ourstory-text">
+          Mahima Church believes that the gospel is not only preached but demonstrated through love and service.
+        </p>
+        <p className="ourstory-text">
+          Through its charitable and social initiatives—now carried forward in association with Mahima Foundation—the church actively engages in:
+        </p>
+        <ul className="ourstory-list">
+          <li>Care for the poor and needy</li>
+          <li>Support for widows and orphans</li>
+          <li>Educational assistance for underprivileged children</li>
+          <li>Food distribution and relief work</li>
+          <li>Prayer and counseling for families in crisis</li>
+        </ul>
+        <p className="ourstory-text">
+          These acts of compassion reflect the heart of Christ and affirm the church’s commitment to holistic ministry.
+        </p>
+      </section>
+      </RevealOnScroll>
+
+      {/* Ministries */}
+      <RevealOnScroll className="ourstory-reveal" delay={0.05}>
+      <section className="ourstory-section light">
+        <h2>MINISTRIES THAT BUILD THE CHURCH</h2>
+        <p className="ourstory-text">
+          Over the years, Mahima Church has developed structured ministries to serve the Kingdom of Christ in a more systematic manner:
+        </p>
+        <ul className="ourstory-list">
+          <li><strong>Worship Ministry:</strong> Spirit-filled worship services that glorify God and lead believers into His presence.</li>
+          <li><strong>Teaching &amp; Discipleship:</strong> Systematic Bible teaching, foundational doctrine classes, and leadership training to raise mature believers.</li>
+          <li><strong>Prayer Ministry:</strong> Fasting prayers, intercessory prayer, healing prayers, and all-night prayer meetings.</li>
+          <li><strong>Youth &amp; Children’s Ministry:</strong> Spiritual nurturing of the next generation through Sunday School, youth fellowships, camps, and mentoring.</li>
+          <li><strong>Women’s Ministry:</strong> Encouraging women to grow spiritually, strengthen families, and serve the church and society.</li>
+          <li><strong>Evangelism &amp; Missions:</strong> Ongoing outreach programs to villages, towns, and cities across Andhra Pradesh and Telangana.</li>
+        </ul>
+      </section>
+      </RevealOnScroll>
+
       {/* Today Section */}
       <RevealOnScroll className="ourstory-reveal" delay={0.1}>
       <section className="ourstory-section highlight">
         <h2>Today: A Growing Family of Faith</h2>
+        <p className="ourstory-text">
+          By the grace of God, what began as a small step of obedience by a woman—with just four people—has today grown into:
+        </p>
 
         <div className="stats-grid">
           <div>
@@ -209,6 +253,25 @@ function OurStory() {
             <p>Cities & Towns</p>
           </div>
         </div>
+      </section>
+      </RevealOnScroll>
+
+      {/* Calling */}
+      <RevealOnScroll className="ourstory-reveal" delay={0.05}>
+      <section className="ourstory-section light">
+        <h2>Our Calling Continues</h2>
+        <p className="ourstory-text">
+          Even after nearly four decades, the vision remains unchanged:
+        </p>
+        <ul className="ourstory-list">
+          <li>To glorify Jesus Christ</li>
+          <li>To proclaim the full gospel</li>
+          <li>To love people unconditionally</li>
+          <li>To prepare the Church for the coming of the Lord</li>
+        </ul>
+        <p className="ourstory-text">
+          Pastor Potluri Ruth Ratnam garu, having faithfully served the Lord for almost 40 years, stands as a testimony of obedience, humility, and unwavering trust in God’s calling.
+        </p>
       </section>
       </RevealOnScroll>
 

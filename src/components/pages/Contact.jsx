@@ -175,7 +175,7 @@ const campuses = [
   {
     name: "Prasadamapdu",
     church: "Mahima Prayer Tower",
-    time: "Sunday · 8:30 AM – 10:30 AM",
+    times: ["Every Sunday Praise & Worship Service · 8:30 AM to 10:30 AM", "Every Friday Healing Prayers · 5 PM to 7 PM"],
     contacts: [
       { name: "Bro. Devaraju", phone: "+91 87123 90777" },
       { name: "Sis. Deboramma", phone: "+91 91605 01681" },
@@ -184,7 +184,7 @@ const campuses = [
   {
     name: "Currency Nagar / Ramavarappadu",
     church: "Mahima Prarthana Mandiram",
-    time: "Sunday · 10:30 AM – 12:30 PM",
+    times: ["Every Sunday Praise & Worship Service · 10:30 AM to 12:30 PM"],
     contacts: [
       { name: "Pastor Bose", phone: "+91 70362 57777" },
       { name: "Sis. Sumadhuramma", phone: "+91 97016 96395" },
@@ -193,16 +193,16 @@ const campuses = [
   {
     name: "Thulluru",
     church: "Mahima Prayer Tower",
-    time: "Sunday · 10 AM – 12 PM",
+    times: ["Every Sunday Praise & Worship Service · 10 AM to 12 PM", "Every Friday Healing Prayers · 6 PM to 9 PM"],
     contacts: [
       { name: "Sis. Sailamma", phone: "+91 94916 66738" },
-      { name: "Sis. Sulochanamma", phone: "+91 89198 30802" },
+      { name: "Sis. Sulochanamma", phone: "+91 891-9830802" },
     ],
   },
   {
     name: "Mandhadum",
     church: "Mahima Prayer Tower",
-    time: "Sunday · 8 AM – 10 AM",
+    times: ["Every Sunday Praise & Worship Service · 8:00 AM to 10:00 AM", "Every Friday Healing Prayers · 3 PM to 6 PM"],
     contacts: [
       { name: "Bro. Niranjan", phone: "+91 95814 94946" },
       { name: "Pastor Peter", phone: "+91 91602 32392" },
@@ -211,7 +211,7 @@ const campuses = [
   {
     name: "Kondapur, Hyderabad",
     church: "Mahima Prayer Tower",
-    time: "Sunday · 10 AM – 12 PM",
+    times: ["Every Sunday Praise & Worship Service · 10 AM to 12 PM", "Every Friday Healing Prayers · 6 PM to 8 PM"],
     contacts: [
       { name: "Sis. Jyothamma", phone: "+91 88867 38515" },
       { name: "Bro. Rajesh", phone: "+91 99895 02004" },
@@ -220,7 +220,7 @@ const campuses = [
   {
     name: "Dachepalli",
     church: "Mahima Prayer Tower",
-    time: "Sunday · 10 AM – 12 PM",
+    times: ["Every Sunday Praise & Worship Service · 10 AM to 12 PM", "Every Friday Healing Prayers · 6 PM to 9 PM"],
     contacts: [
       { name: "Pastor Yehoshuva", phone: "+91 97056 44966" },
       { name: "Bro. Niranjan", phone: "+91 95814 94946" },
@@ -229,10 +229,10 @@ const campuses = [
   {
     name: "Kanchikacherla",
     church: "Mahima Prayer Tower",
-    time: "Sunday · 4 PM – 6 PM",
+    times: ["Every Sunday Praise & Worship Service · 4 PM to 6 PM"],
     contacts: [
       { name: "Bro. Devaraju", phone: "+91 87123 90777" },
-      { name: "Bro. Cephas", phone: "+91 83095 09297" },
+      { name: "Bro. Cephas", phone: "+91 8309-509297" },
     ],
   },
 ];
@@ -274,7 +274,13 @@ function Contact() {
                   </div>
                   
                   <h3>{campus.church}</h3>
-                  <p className="contact-campus-time"><Clock3 size={15} aria-hidden="true" /> {campus.time}</p>
+                  <div className="contact-campus-times">
+                    {campus.times.map((time) => (
+                      <p className="contact-campus-time" key={time}>
+                        <Clock3 size={15} aria-hidden="true" /> {time}
+                      </p>
+                    ))}
+                  </div>
                   <div className="contact-campus-people">
                     {campus.contacts.map(({ name, phone }) => (
                       <a key={name} href={`tel:${phone.replace(/[^\d+]/g, "")}`}>

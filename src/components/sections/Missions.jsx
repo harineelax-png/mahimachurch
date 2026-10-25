@@ -246,8 +246,8 @@ function MissionVision() {
             </div>
             <h2>Our Vision</h2>
             <p>
-              To share the Good News of God’s love and to see all Indians loving
-              God wholeheartedly and loving one another—just as Jesus did.
+              Sharing the Good News of God’s Love and seeing all Indians loving
+              God - like Jesus did and loving one another – like Jesus did !
             </p>
           </div>
         </RevealOnScroll>
@@ -264,10 +264,17 @@ function MissionVision() {
             </div>
             <h2>Our Mission</h2>
             <p>
-              In the service of God and in the service of the nation—by proclaiming
-              the Gospel of Jesus Christ, transforming lives through God’s Word
-              and Spirit, and serving the needy, healing the broken, and bringing
-              hope through acts of love, mercy, and compassion.
+              In the Service of God and in the Service of Nation !!!
+            </p>
+            <p>
+              In the Service of God - by preaching the Gospel of Jesus Christ,
+              reaching the lost and transforming lives through the power of
+              God’s Word and Spirit.
+            </p>
+            <p>
+              In the Service of Nation - by being the Body of Christ, serving the
+              needy, healing the broken, and bringing hope through acts of love,
+              mercy, and kindness.
             </p>
           </div>
         </RevealOnScroll>
