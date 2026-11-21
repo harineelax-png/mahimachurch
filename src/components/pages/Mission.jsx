@@ -187,11 +187,20 @@
 import React, { useRef, useState, useEffect } from "react";
 
 // TOP SLIDER IMAGES
-import slide1 from "./../../images/mahimagoodsamaritan1.jpg";
-import slide2 from "./../../images/mahimagoodsamaritan2.JPG";
-import slide3 from "./../../images/mahimagoodsamaritan3.jpg";
-import slide4 from "./../../images/mahimagoodsamaritan4.JPG";
-import slide5 from "./../../images/mahimagoodsamaritan5.JPG";
+import slide1 from "./../../images/g_01.jpeg";
+import slide2 from "./../../images/g_02.jpeg";
+import slide3 from "./../../images/g_03.jpeg";
+import slide4 from "./../../images/g_04.jpeg";
+import slide5 from "./../../images/g_05.jpeg";
+import slide6 from "./../../images/g_06.jpeg";
+import slide7 from "./../../images/g_07.jpeg";
+import slide8 from "./../../images/g_08.jpeg";
+import slide9 from "./../../images/g_09.jpeg";
+import slide10 from "./../../images/g_10.jpeg";
+import slide11 from "./../../images/g_11.jpeg";
+import slide12 from "./../../images/g_12.jpeg";
+import slide13 from "./../../images/g_13.jpeg";
+import slide14 from "./../../images/g_14.jpeg";
 
 // LOWER SLIDER IMAGES
 import new1 from "./../../images/mahimagospelmessengers1.JPG";
@@ -225,7 +234,9 @@ const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
     window.addEventListener("scroll", onScroll, { passive: true });
 
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
       { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
     );
     observer.observe(el);
@@ -340,7 +351,10 @@ function Mission() {
   }, []);
 
   /* ---------------- TOP SLIDER ---------------- */
-  const slides = [slide1, slide2, slide3, slide4, slide5];
+  const slides = [
+    slide1, slide2, slide3, slide4, slide5, slide6, slide7,
+    slide8, slide9, slide10, slide11, slide12, slide13, slide14,
+  ];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {

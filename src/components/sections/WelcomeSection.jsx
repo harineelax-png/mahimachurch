@@ -262,7 +262,7 @@
 
 
 import React, { useState, useRef, useEffect } from "react";
-import sectionImage from "../../images/welcomeimage2.jpg"; // Update your image
+import sectionImage from "../../images/welcomeimage2.jpeg"; // Update your image
 
 /* =====================================================================
    Direction-aware scroll reveal (fires scrolling DOWN and UP; re-triggers)
@@ -286,7 +286,9 @@ const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
     window.addEventListener("scroll", onScroll, { passive: true });
 
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
       { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
     );
     observer.observe(el);

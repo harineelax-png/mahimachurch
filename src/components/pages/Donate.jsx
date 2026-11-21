@@ -35,7 +35,9 @@ const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
     window.addEventListener("scroll", onScroll, { passive: true });
 
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
       { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
     );
     observer.observe(el);
@@ -420,14 +422,14 @@ function Donate() {
         </header>
 
         {/* ================= MESSAGE SECTION (Original Preserved) ================= */}
-        <RevealOnScroll className="donate-message">
+        {/* <RevealOnScroll className="donate-message">
           <span className="theme-eyebrow">Generosity in action</span>
           <h2>Why we give</h2>
           <p>
             Your generous giving helps us in continuing to spread the message of hope &amp;
             love and in bringing about transformation in our community.
           </p>
-        </RevealOnScroll>
+        </RevealOnScroll> */}
 
         {/* ================= SPLIT LAYOUT (Left Details, Right QR) ================= */}
         <RevealOnScroll className="donate-code-section">

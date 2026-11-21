@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import img1 from "../../images/image1.jpg";
-import img2 from "../../images/image2.jpg";
-import img3 from "../../images/image3.jpg";
-import img4 from "../../images/image4.jpg";
+import img1 from "../../images/b_01.jpeg";
+import img2 from "../../images/b_02.jpeg";
+import img3 from "../../images/b_03.jpeg";
+import img4 from "../../images/b_04.jpeg";
+import img5 from "../../images/b_05.jpeg";
 
-const images = [img1, img2, img3, img4];
+const images = [img1, img2, img3, img4, img5];
 
 const heroAnimations = `
   @keyframes heroTextIn {
