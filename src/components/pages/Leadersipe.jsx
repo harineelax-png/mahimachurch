@@ -9,6 +9,8 @@ import pastorGurvaya from "../../images/gurvaya1.jpg";
 import imgSangeethamma from "../../images/sangeetha.jpeg"; // <-- Updated path here
 import imgJohnBabu from "../../images/John babu.jpeg";
 import imgCephas from "../../images/Cephas.jpeg";
+import imgAsha from "../../images/sister_asha.jpeg";
+import imgSatyaPrasad from "../../images/Satya Prasad.jpeg";
 // TODO: Update these file paths to match your actual image names for Ruthu and Ramesh
 import imgRuthu from "../../images/Ruthu.jpeg"; 
 import imgRamesh from "../../images/Ramesh.jpeg";
@@ -190,9 +192,11 @@ const leadershipTeam = [
 // --- UPDATED PASTORAL TEAM ---
 const pastoralTeam = [
   { name: "Pastor John Babu", image: imgJohnBabu },
-  { name: "Pastor Devaraju", image: pastorDevaraju },
-  { name: "Pastor Cephas", image: imgCephas },
-  { name: "Pastor Vinay", image: pastorVinay },
+  { name: "Sister Asha", image: imgAsha },
+  { name: "Brother Devaraju", image: pastorDevaraju },
+  { name: "Brother Cephas", image: imgCephas },
+  { name: "Brother Vinay", image: pastorVinay },
+  { name: "Brother Satya Prasad", image: imgSatyaPrasad },
 ];
 
 const leadershipValues = [
